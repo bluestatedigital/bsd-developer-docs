@@ -1,84 +1,89 @@
 
-<h1>Blue State Digital API (v2)</h1>
-
-
-<div class="major_section">
-            <h3 id="-----------------Overview-------------">1.1. 
+        <h2>
+            Blue State Digital Trusted API
+        </h2>
+        <div class="major_section">
+            <h3>
                 Overview
             </h3>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-Record-Formats-------------">1.2. 
+            <h3>
                 Common Record Formats
             </h3>
             <p>
                 Certain types of data are returned by multiple API requests. These record formats are defined below. (<small>note: All times returned by the API will be in the system timezone</small>)
             </p>
-            <h4 id="-----------------Error-messages-------------">1.2.1. 
+            <h4>
                 Error messages
             </h4>
-            <h5 id="-----------------Generic-Graph-API-Errors-------------">1.2.1.1. 
+            <h5>
                 Generic Graph API Errors
             </h5>
             <p>
                 Error messages from the graph API will have <code>error</code> and <code>error_description</code> fields in their JSON response. Here is an example of an error caused by accessing a Graph page that requires HTTPS over an insecure connection:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 {
    "error":"invalid_request",
    "error_description":"Secure connection required"
 }
 </samp>
 </pre>
-            <h5 id="-----------------Permission-denied-------------">1.2.1.2. 
+            <h5>
                 Permission denied
             </h5>
             <p>
                 This error is returned when the Graph page requires the requester to be authenticated and they are not, or is for a resource that the authenticated user does not have permissions to.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 {
    "error":"permission_denied",
    "error_description":"You must be logged in to view this information"
 }
 </samp>
 </pre>
-            <h5 id="-----------------Rate-limit-exceeded-------------">1.2.1.3. 
+            <h5>
                 Rate limit exceeded
             </h5>
             <p>
                 This error is returned when a user or IP address has exceeded the allowed rate limit for requests.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 {
    "error":"rate_limit_exceeded",
    "error_description":"Too many requests"
 }
 </samp>
 </pre>
-            <h5 id="-----------------Invalid-parameters-------------">1.2.1.4. 
+            <h5>
                 Invalid parameters
             </h5>
             <p>
                 This error is returned when the request is missing a required parameter, or one or more of the supplied parameters are invalid.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 {
    "error":"invalid_parameters",
    "error_description":"The path parameter 'foo' is required"
 }
 </samp>
 </pre>
-            <h4 id="-----------------Exported-JSON-Circle-Records-------------">1.2.2. 
+            <h4>
                 Exported JSON Circle Records
             </h4>
-            <h5 id="-----------------Core--circle-------------">1.2.2.1. 
-                Core: circle
+            <h5>
+                Core: <code>circle</code>
             </h5>
             <p>
                 The core circle record contains the circle's slug, name, description, circle type, member count, and creation and modified dates:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 {
    "slug":"test slug",
    "name":"test circle #1",
@@ -92,14 +97,14 @@
 </pre>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-Query-Parameters-------------">1.3. 
+            <h3>
                 Common Query Parameters
             </h3>
             <p>
                 Every Graph API request, unless otherwise noted, supports certain common query parameters.
             </p>
-            <h4 id="-----------------callback-------------">1.3.1. 
-                callback
+            <h4>
+                <code>callback</code>
             </h4>
             <p>
                 <code>callback</code> is an optional parameter that specifies the name of a JavaScript function to use as the JSON-P wrapper for the returned data. It implicitly makes the request a JSON-P request.
@@ -107,9 +112,11 @@
             <p>
                 Example:
             </p>
-            <pre><samp>?callback=my_func</samp>
+            <pre>
+<samp>?callback=my_func</samp>
 </pre>
-            <pre><samp>
+            <pre>
+<samp>
 my_func({
    "data":[
       {
@@ -127,15 +134,15 @@ my_func({
 </pre>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Graph-API-Reference-------------">1.4. 
+            <h3>
                 Graph API Reference
             </h3>
-            <h4 id="-----------------Circle-Graph-API-------------">1.4.1. 
+            <h4>
                 Circle Graph API
             </h4><!-- /circles/by_zip -->
             <div class="api_method">
-                <h5 id="----------------------circles-by_zip--zip--radius-----------------">1.4.1.1. 
-                    /circles/by_zip/$zip/$radius
+                <h5>
+                    <code>/circles/by_zip/$zip/$radius</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -194,11 +201,13 @@ the given radius that also have zip codes in the specified state_cd.</dd>
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 http://XYZ/page/graph/circles/by_zip/12345/20
 </samp>
 </pre>
-                    <pre><samp>
+                    <pre>
+<samp>
 {
    "data":[
       {
@@ -313,12 +322,12 @@ path parameters are missing.</p>
 
 </div>
 -->
-            <h4 id="-----------------Constituent-Graph-API-------------">1.4.2. 
+            <h4>
                 Constituent Graph API
             </h4><!-- /me/circles -->
             <div class="api_method">
-                <h5 id="----------------------me-circles-----------------">1.4.2.1. 
-                    /me/circles
+                <h5>
+                    <code>/me/circles</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -343,11 +352,13 @@ path parameters are missing.</p>
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 http://XYZ/page/graph/me/circles
 </samp>
 </pre>
-                    <pre><samp>
+                    <pre>
+<samp>
 {
    "data":[
       {
@@ -382,12 +393,12 @@ http://XYZ/page/graph/me/circles
                     </p>
                 </div>
             </div>
-            <h4 id="-----------------Event-RSVP-Graph-API-------------">1.4.3. 
+            <h4>
                 Event RSVP Graph API
             </h4>
             <div class="api_method">
-                <h5 id="----------------------graph-addrsvp-----------------">1.4.3.1. 
-                    /graph/addrsvp
+                <h5>
+                    <code>/graph/addrsvp</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -397,14 +408,16 @@ http://XYZ/page/graph/me/circles
                         <p>
                             Example with minimal information (guid):
                         </p>
-                        <pre><samp>
+                        <pre>
+<samp>
 /page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;<strong>guid=HASH</strong>
 </samp>
 </pre>
                         <p>
                             Alternate example with minimal information (email &amp; zip):
                         </p>
-                        <pre><samp>
+                        <pre>
+<samp>
 /page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;<strong>email=user@example.com&amp;zip=02210</strong>
 </samp>
 </pre>
@@ -416,7 +429,8 @@ http://XYZ/page/graph/me/circles
                         <p>
                             Example of multiday event:
                         </p>
-                        <pre><samp>
+                        <pre>
+<samp>
 /page/graph/rsvp/add?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH
 </samp>
 </pre>
@@ -424,7 +438,7 @@ http://XYZ/page/graph/me/circles
                             Results in:
                         </p>
                         <table>
-                            <tbody><tr>
+                            <tr>
                                 <td>
                                     event_id
                                 </td>
@@ -476,7 +490,7 @@ http://XYZ/page/graph/me/circles
                                     0
                                 </td>
                             </tr>
-                        </tbody></table>
+                        </table>
                     </div>
                     <p>
                         <code>shift_ids</code> is simillarly specified by a comma-separted list and required for all shifted events.
@@ -488,7 +502,8 @@ http://XYZ/page/graph/me/circles
                         <p>
                             Example of multiple shifts with guests:
                         </p>
-                        <pre><samp>
+                        <pre>
+<samp>
 /page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;guid=HASH&amp;<strong>shift_ids=5,8,9,4&amp;guests=2,2,0,2</strong>
 </samp>
 </pre>
@@ -500,7 +515,8 @@ http://XYZ/page/graph/me/circles
                         <p>
                             Example of multiday event:
                         </p>
-                        <pre><samp>
+                        <pre>
+<samp>
 /page/graph/rsvp/add?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH&amp;<strong>guests=0,1</strong>
 </samp>
 </pre>
@@ -657,12 +673,12 @@ http://XYZ/page/graph/me/circles
                     </div>
                 </div>
             </div>
-            <h4 id="-----------------Actions-Graph-API-------------">1.4.4. 
+            <h4>
                 Actions Graph API
             </h4><!-- /getactions -->
             <div class="api_method">
-                <h5 id="----------------------getactions-----------------">1.4.4.1. 
-                    /getactions
+                <h5>
+                    <code>/getactions</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -762,11 +778,13 @@ http://XYZ/page/graph/me/circles
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 http://XYZ/page/graph/getactions?q=attributes.fizz:buzz
 </samp>
 </pre>
-                    <pre><samp>
+                    <pre>
+<samp>
 {
     "hits":[
         {
@@ -794,11 +812,13 @@ http://XYZ/page/graph/getactions?q=attributes.fizz:buzz
 </samp>
 </pre>
                 </div>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/graph/getactions?includeAttributedActions=true&amp;facets={"degreesOfSeparation":{"terms":{"field":"degreeOfSeparation","size":10,"global":false}}}&amp;from=1&amp;size=3
 </samp>
 </pre>
-                <pre><samp>
+                <pre>
+<samp>
 {
     "hits":[
         {
@@ -895,12 +915,12 @@ http://XYZ/page/graph/getactions?includeAttributedActions=true&amp;facets={"degr
                 </p>
             </div>
         </div>
-        <h4 id="-------------Ladder-of-Engagement-Graph-API---------">1.4.5. 
+        <h4>
             Ladder of Engagement Graph API
         </h4><!-- LOE -->
         <div class="api_method">
-            <h5 id="------------------loe--GUID-------------">1.4.5.1. 
-                /loe/$GUID
+            <h5>
+                <code>/loe/$GUID</code>
             </h5>
             <div class="description">
                 <p>
@@ -980,11 +1000,13 @@ http://XYZ/page/graph/getactions?includeAttributedActions=true&amp;facets={"degr
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/graph/loe/abcdefghij1234567
 </samp>
 </pre>
-                <pre><samp>
+                <pre>
+<samp>
 {
     "email":true,
     "location":true,
@@ -1005,7 +1027,8 @@ http://XYZ/page/graph/loe/abcdefghij1234567
                 <p>
                     If the GUID is not found, the following error will be returned:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 {
     "error":"invalid_cons_id",
     "error_description":"Constituent ID does not exist"
@@ -1014,11 +1037,11 @@ http://XYZ/page/graph/loe/abcdefghij1234567
 </pre>
             </div>
         </div><!-- end LOE -->
-        <h2 id="-------------Blue-State-Digital-XML-API---------">2. 
+        <h2>
             Blue State Digital XML API
         </h2>
         <div class="major_section">
-            <h3 id="-----------------Overview-------------0.5491667233873159">2.1. 
+            <h3>
                 Overview
             </h3>
             <p>
@@ -1032,7 +1055,7 @@ http://XYZ/page/graph/loe/abcdefghij1234567
             </p>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-API-Parameters-------------">2.2. 
+            <h3>
                 Common API Parameters
             </h3>so that actions may be retrieved for known guid values without needing to set a cookie manually
             <p>
@@ -1077,7 +1100,7 @@ http://XYZ/page/graph/loe/abcdefghij1234567
             </p>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Deferred-Results-------------">2.3. 
+            <h3>
                 Deferred Results
             </h3>
             <p>
@@ -1086,7 +1109,8 @@ http://XYZ/page/graph/loe/abcdefghij1234567
             <p>
                 The following pseudo-code shows how to retrieve deferred results inline with the code making the initial API call. Of course, depending on how long the API call takes to return the results and the nature of your program, you may not want to have your code block while polling for results.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 $response_obj = make_api_call(
     "some_call_that_defers", "some=param&amp;some_other=param");
 
@@ -1108,7 +1132,7 @@ $actual_result = $response_obj.get_response_body();
             <p>
                 If you make extensive use of API calls which may defer their results, you may consider using the above code on all of your API calls to save yourself the effort of implementing support in each location where you make a call. It should do the right thing whether the API call defers its results or not.
             </p>
-            <h4 id="-----------------Deferred-Result-Callbacks-------------">2.3.1. 
+            <h4>
                 Deferred Result Callbacks
             </h4>
             <p>
@@ -1130,12 +1154,12 @@ $actual_result = $response_obj.get_response_body();
                     </dd>
                 </dl>
             </div>
-            <h4 id="-----------------Deferred-Results-API-Calls-------------">2.3.2. 
+            <h4>
                 Deferred Results API Calls
             </h4><!-- get_deferred_results -->
             <div class="api_method">
-                <h5 id="---------------------get_deferred_results-----------------">2.3.2.1. 
-                    get_deferred_results
+                <h5>
+                    <code>get_deferred_results</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -1184,29 +1208,31 @@ $actual_result = $response_obj.get_response_body();
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-Record-Formats-------------0.6868029132019728">2.4. 
+            <h3>
                 Common Record Formats
             </h3>
             <p>
                 Certain types of data are returned by multiple API calls. These record formats are defined below. (<small>note: All times returned by the API will be in the system timezone</small>)
             </p>
-            <h4 id="-----------------Exported-XML-Circle-Records-------------">2.4.1. 
+            <h4>
                 Exported XML Circle Records
             </h4>
-            <h5 id="-----------------Core--circle-------------0.5388294602744281">2.4.1.1. 
-                Core: circle
+            <h5>
+                Core: <code>circle</code>
             </h5>
             <p>
                 The core circle record contains the name, slug, description, circle type, member count and creation date:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;circle id="1" modified_dt="1223651690"&gt;
     &lt;name&gt;test circle#1&lt;/name&gt;
     &lt;slug&gt;test_slug&lt;/slug&gt;
@@ -1217,7 +1243,7 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/circle&gt;
 </samp>
 </pre>
-            <h4 id="-----------------Exported-XML-Constituent-Records-------------">2.4.2. 
+            <h4>
                 Exported XML Constituent Records
             </h4>
             <p>
@@ -1226,13 +1252,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 Bundles are added to each <code>&lt;cons&gt;</code> XML element. If there a bundle has more than one data element associated with it, all elements will be included inside the <code>&lt;cons&gt;</code> XML element. For example, using the <code>cons_addr</code> bundle for a person with two addresses would result in two <code>&lt;cons_addr&gt;</code> elements inside their <code>&lt;cons&gt;</code> element.
             </p>
-            <h5 id="-----------------Core--cons-------------">2.4.2.1. 
-                Core: cons
+            <h5>
+                Core: <code>cons</code>
             </h5>
             <p>
                 The core constituent record contains only the GUID, name, account status, and account creation date:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1252,13 +1279,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 All other information is added via data bundles.
             </p>
-            <h5 id="-----------------Data-Bundle--circle-------------">2.4.2.2. 
-                Data Bundle: circle
+            <h5>
+                Data Bundle: <code>circle</code>
             </h5>
             <p>
                 The <code>circle</code> bundle provides information about all of the circles that a person is a member of.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1285,13 +1313,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--community_journal-------------">2.4.2.3. 
-                Data Bundle: community_journal
+            <h5>
+                Data Bundle: <code>community_journal</code>
             </h5>
             <p>
                 The <code>community_journal</code> bundle provides information about a person's community blog participation. If a journal exists but does not contain any posts <code>first_post_dt</code>, <code>latest_post_dt</code>, and <code>num_posts</code> will return zero. If the journal posts (if any exist) do not have any comments <code>first_comment_dt</code>, <code>latest_comment_dt</code>, and <code>num_comments</code> will return zero.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1314,13 +1343,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--cons_addr-------------">2.4.2.4. 
-                Data Bundle: cons_addr
+            <h5>
+                Data Bundle: <code>cons_addr</code>
             </h5>
             <p>
                 The <code>cons_addr</code> data bundles add address information to a constituent record. <code>cons_addr</code> will add zero or more address elements. Example (with one address):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1345,13 +1375,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--cons_email-and-primary_cons_email-------------">2.4.2.5. 
-                Data Bundle: cons_email and primary_cons_email
+            <h5>
+                Data Bundle: <code>cons_email</code> and <code>primary_cons_email</code>
             </h5>
             <p>
                 The <code>cons_email</code> and <code>primary_cons_email</code> data bundles add email addresses to a constituent record. <code>cons_email</code> will add zero or more elements. <code>primary_cons_email</code> will add zero or one email elements, choosing the most recently added email address as the primary one. Example (with two email addresses):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1377,13 +1408,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--cons_field-------------">2.4.2.6. 
-                Data Bundle: cons_field
+            <h5>
+                Data Bundle: <code>cons_field</code>
             </h5>
             <p>
                 The <code>cons_field</code> data bundle adds custom constituent fields to a constituent record. <code>cons_field</code> will add zero or more elements. Example (with two custom constituent fields):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1403,13 +1435,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--cons_friends-------------">2.4.2.7. 
-                Data Bundle: cons_friends
+            <h5>
+                Data Bundle: <code>cons_friends</code>
             </h5>
             <p>
                 The <code>cons_friends</code> bundle provides information about a person's socialnet relationships. If the constituent has any consummated socialnet relationships, then the socialnet element will contain one or more friend elements.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1441,13 +1474,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h5 id="-----------------Data-Bundle--cons_group-------------">2.4.2.8. 
-                Data Bundle: cons_group
+            <h5>
+                Data Bundle: <code>cons_group</code>
             </h5>
             <p>
                 The <code>cons_group</code> bundle provides information about a person's constituent group membership.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1462,13 +1496,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--cons_phone-and-primary_cons_phone-------------">2.4.2.9. 
-                Data Bundle: cons_phone and primary_cons_phone
+            <h5>
+                Data Bundle: <code>cons_phone</code> and <code>primary_cons_phone</code>
             </h5>
             <p>
                 The <code>cons_phone</code> and <code>primary_cons_phone</code> data bundles add phone numbers to a constituent record. cons_addr will add zero or more elements. <code>primary_cons_phone</code> will add zero or one phone number elements, choosing the most recently added phone number as the primary one. Example (with two phone numbers):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1493,13 +1528,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--event-------------">2.4.2.10. 
-                Data Bundle: event
+            <h5>
+                Data Bundle: <code>event</code>
             </h5>
             <p>
                 The event bundle provides information about a person's event participation.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1522,13 +1558,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Data-Bundle--ext_X-------------">2.4.2.11. 
-                Data Bundle: ext_X
+            <h5>
+                Data Bundle: <code>ext_X</code>
             </h5>
             <p>
                 The <code>ext_X</code> bundle allows the inclusion of external IDs (as set with the <code>set_ext_ids</code> API call). X is to be replaced with the external ID type specified on the <code>set_ext_ids</code> call. The following example assumes that a data bundle of ext_van_id was specified and that an external ID of type van_id had been specified for the resulting constituent record:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382" modified_dt="1171861200"&gt;
     &lt;guid&gt;ygdFPkyEdomzBhWEFZGREys&lt;/guid&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
@@ -1542,19 +1579,20 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons&gt;
 </samp>
 </pre>
-            <h4 id="-----------------Incoming-XML-Constituent-Records-------------">2.4.3. 
+            <h4>
                 Incoming XML Constituent Records
             </h4>
             <p>
                 The API allow for incoming bundle data in similar formats to outgoing data, with several changes for IDs. Incoming data must be encoded as UTF-8.
             </p>
-            <h5 id="-----------------Core--cons-------------0.5194082870148122">2.4.3.1. 
-                Core: cons
+            <h5>
+                Core: <code>cons</code>
             </h5>
             <p>
                 The core constituent record contains only the name, account status, and account creation date (GUID cannot be set by an external call; it will be generated when the constituent is created:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons <em>id="4382" ext_id="ext_20034" ext_type="client_system"</em>&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1640,13 +1678,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 All other information is added via data bundles.
             </p>
-            <h5 id="-----------------Data-Bundle--cons_addr-------------0.8383310027420521">2.4.3.2. 
-                Data Bundle: cons_addr
+            <h5>
+                Data Bundle: <code>cons_addr</code>
             </h5>
             <p>
                 The <code>cons_addr</code> data bundles add address information to a constituent record in BSD's database. <code>cons_addr</code> will add zero or more address elements. Incoming <code>cons_addr</code> records do not contain IDs; they are automatically associated with the cons record they are nested in. Example (with one address):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1724,13 +1763,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h5 id="-----------------Data-Bundle--cons_email-and-primary_cons_email-------------0.4196722968481481">2.4.3.3. 
-                Data Bundle: cons_email and primary_cons_email
+            <h5>
+                Data Bundle: <code>cons_email</code> and <code>primary_cons_email</code>
             </h5>
             <p>
                 The <code>cons_email</code> and <code>primary_cons_email</code> data bundles add email addresses to a constituent record. <code>cons_email</code> will add zero or more elements. <code>primary_cons_email</code> will add zero or one email elements, choosing the most recently added email address as the primary one. Incoming <code>cons_email</code> records do not contain IDs; they are automatically associated with the cons record they are nested in. Example (with two email addresses):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1784,13 +1824,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h5 id="-----------------Data-Bundle--cons_group-------------0.5002809336874634">2.4.3.4. 
-                Data Bundle: cons_group
+            <h5>
+                Data Bundle: <code>cons_group</code>
             </h5>
             <p>
                 The <code>cons_group</code> bundle provides information about a person's constituent group membership.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1822,13 +1863,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h5 id="-----------------Data-Bundle--cons_phone-and-primary_cons_phone-------------0.9267268052790314">2.4.3.5. 
-                Data Bundle: cons_phone and primary_cons_phone
+            <h5>
+                Data Bundle: <code>cons_phone</code> and <code>primary_cons_phone</code>
             </h5>
             <p>
                 The <code>cons_phone</code> and <code>primary_cons_phone</code> data bundles add phone numbers to a constituent record. <code>primary_cons_phone</code> will add zero or one phone number elements, choosing the most recently added phone number as the primary one. Incoming <code>cons_phone</code> records do not contain IDs; they are automatically associated with the cons record they are nested in. Example (with two phone numbers):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1882,13 +1924,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h5 id="-----------------Data-Bundle--ext_X-------------0.059157671639695764">2.4.3.6. 
-                Data Bundle: ext_X
+            <h5>
+                Data Bundle: <code>ext_X</code>
             </h5>
             <p>
                 The <code>ext_X</code> bundle allows the inclusion of external IDs (as set with the <code>set_ext_ids</code> API call). X is to be replaced with the external ID type specified on the <code>set_ext_ids</code> call. The following example assumes that a data bundle of ext_van_id was specified and that an external ID of type van_id had been specified for the resulting constituent record:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons id="4382"&gt;
     &lt;firstname&gt;Bob&lt;/firstname&gt;
     &lt;lastname&gt;Smith&lt;/lastname&gt;
@@ -1919,19 +1962,20 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h4 id="-----------------Exported-XML-Constituent-Group-Records-------------">2.4.4. 
+            <h4>
                 Exported XML Constituent Group Records
             </h4>
             <p>
                 Constituent groups are sets of constituents with some common attribute or grouping. The core constituent group is small, similar to the core constituent record. Also like the core constituent record, the constituent group record contains a modified_dt attribute. This contains the date and time (in epoch seconds) when a constituent group (or its membership) was last modified.
             </p>
-            <h5 id="-----------------Core--cons_group-------------">2.4.4.1. 
-                Core: cons_group
+            <h5>
+                Core: <code>cons_group</code>
             </h5>
             <p>
                 The core constituent group record contains only the <code>name</code>, <code>slug</code>, <code>group_type</code>, and description.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons_group id="42" modified_dt="1171861200"&gt;
     &lt;name&gt;First Quarter Donors&lt;/name&gt;
     &lt;slug&gt;q1donors&lt;/slug&gt;
@@ -1946,19 +1990,20 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/cons_group&gt;
 </samp>
 </pre>
-            <h4 id="-----------------Incoming-XML-Constituent-Group-Records-------------">2.4.5. 
+            <h4>
                 Incoming XML Constituent Group Records
             </h4>
             <p>
                 The API allow for incoming constituent group data in similar formats to outgoing data. Incoming data must be encoded as UTF-8.
             </p>
-            <h5 id="-----------------Core--cons_group-------------0.14322069101035595">2.4.5.1. 
-                Core: cons_group
+            <h5>
+                Core: <code>cons_group</code>
             </h5>
             <p>
                 The core constituent group record contains only the name, slug, group type, and description.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cons_group&gt;
     &lt;name&gt;Third Quarter Fundraisers&lt;/name&gt;
     <em>&lt;slug&gt;q3fundraisers&lt;/slug&gt;
@@ -2021,39 +2066,42 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                     </dd>
                 </dl>
             </div>
-            <h4 id="-----------------Exported-XML-Signup-Form-Records-------------">2.4.6. 
+            <h4>
                 Exported XML Signup Form Records
             </h4>
-            <h5 id="-----------------Core--count_by_field-------------">2.4.6.1. 
-                Core: count_by_field
+            <h5>
+                Core: <code>count_by_field</code>
             </h5>
             <p>
                 The core count_by_field record contains the number of constituents that filled out a certain signup form field:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;signup_form_field&gt;
     &lt;value&gt;form_value2&lt;/value&gt;
     &lt;count&gt;2&lt;/count&gt;
 &lt;/signup_form_field&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Core--signup_count-------------">2.4.6.2. 
-                Core: signup_count
+            <h5>
+                Core: <code>signup_count</code>
             </h5>
             <p>
                 The core signup_count record contains the only the number of constituents that matched the query:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;count&gt;6&lt;/count&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Core--signup_form-------------">2.4.6.3. 
-                Core: signup_form
+            <h5>
+                Core: <code>signup_form</code>
             </h5>
             <p>
                 The core signup_form record contains the signup_form_name, slug, public title, and creation date:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;signup_form id="1" modified_dt="1267728690"&gt;
     &lt;signup_form_name&gt;Default Signup Form&lt;/signup_form_name&gt;
     &lt;signup_form_slug&gt;slug&lt;/signup_form_slug&gt;
@@ -2062,13 +2110,14 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
 &lt;/signup_form&gt;
 </samp>
 </pre>
-            <h5 id="-----------------Core--signup_form_field-------------">2.4.6.4. 
-                Core: signup_form_field
+            <h5>
+                Core: <code>signup_form_field</code>
             </h5>
             <p>
                 The core signup_form_field record contains the label, description, display_order, is_shown, is_required, is_custom_field, cons_field_id, and creation date:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;signup_form_field id="84"&gt;
     &lt;format&gt;1&lt;/format&gt;
     &lt;label&gt;Last Name&lt;/label&gt;
@@ -2090,7 +2139,8 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 For textboxes
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;size&gt;10&lt;/size&gt;
 &lt;maxlength&gt;10&lt;/maxlength&gt;
 &lt;rule&gt;10&lt;/rule&gt;
@@ -2099,7 +2149,8 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 For textareas
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;cols&gt;10&lt;/cols&gt;
 &lt;rows&gt;10&lt;/rows&gt;
 </samp>
@@ -2107,7 +2158,8 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
             <p>
                 For dropdown lists
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;options&gt;one|1
 two|2&lt;/options&gt;
 &lt;columns&gt;10&lt;/columns&gt;
@@ -2116,7 +2168,8 @@ two|2&lt;/options&gt;
             <p>
                 For checkbox lists
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;options&gt;one|1
 two|2&lt;/options&gt;
 &lt;columns&gt;10&lt;/columns&gt;
@@ -2125,7 +2178,8 @@ two|2&lt;/options&gt;
             <p>
                 For radio button lists
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;options&gt;one|1
 two|2&lt;/options&gt;
 &lt;columns&gt;10&lt;/columns&gt;
@@ -2134,14 +2188,16 @@ two|2&lt;/options&gt;
             <p>
                 For static fields
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;text&gt;hi&lt;/text&gt;
 </samp>
 </pre>
             <p>
                 For binary checkboxes get "binarycheckbox_email" added to the main bundle, along with:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;desc&gt;user facing description&lt;/desc&gt;
 &lt;default&gt;0&lt;/default&gt;
 &lt;cons_group_id&gt;0&lt;/cons_group_id&gt;
@@ -2150,7 +2206,8 @@ two|2&lt;/options&gt;
             <p>
                 For upload fields
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;file_size&gt;100&lt;/file_size&gt;
 &lt;file_types&gt;
     &lt;file_type&gt;application/msword:doc&lt;file_type&gt;
@@ -2160,7 +2217,8 @@ two|2&lt;/options&gt;
             <p>
                 For autocomplete fields
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;size&gt;3&lt;/size&gt;
 &lt;maxlength&gt;100&lt;/maxlength&gt;
 &lt;source&gt;http://www.bluestatedigital.com/source/to/text/file&lt;/source&gt;
@@ -2170,16 +2228,17 @@ two|2&lt;/options&gt;
             <p>
                 For hidden fields, nothing is added
             </p>
-            <h4 id="-----------------Exported-XML-Signup-Records-------------">2.4.7. 
+            <h4>
                 Exported XML Signup Records
             </h4>
-            <h5 id="-----------------Core--stg_signups-------------">2.4.7.1. 
-                Core: stg_signups
+            <h5>
+                Core: <code>stg_signups</code>
             </h5>
             <p>
                 The stg_signups includes stg_signup records. If there are stg_signup_extras associated with the stg_signup record they are included as children of the stg_signup record. If there are associated stg_signup_extra_values associated with the stg_signup_extra records they are included as children of the stg_signup_extra record.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;stg_signups&gt;
     &lt;stg_signup stg_signup_id="1"&gt;
         &lt;stg_signup_id&gt;1&lt;/stg_signup_id&gt;
@@ -2269,16 +2328,17 @@ two|2&lt;/options&gt;
 &lt;/stg_signups&gt;
 </samp>
 </pre>
-            <h4 id="-----------------Exported-XML-Wrapper-Records-------------">2.4.8. 
+            <h4>
                 Exported XML Wrapper Records
             </h4>
-            <h5 id="-----------------Core--wrappers-------------">2.4.8.1. 
-                Core: wrappers
+            <h5>
+                Core: <code>wrappers</code>
             </h5>
             <p>
                 The core wrapper record contains the name, description, and creation date:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 &lt;wrapper id="1" modified_dt="1265250882"&gt;
     &lt;name&gt;default wrapper&lt;/name&gt;
     &lt;description&gt;This is the default wrapper&lt;/description&gt;
@@ -2286,16 +2346,17 @@ two|2&lt;/options&gt;
 &lt;/wrapper&gt;
 </samp>
 </pre>
-            <h4 id="-----------------JSON-Event-Blobs-------------">2.4.9. 
+            <h4>
                 JSON Event Blobs
             </h4>
-            <h5 id="-----------------Event--list_rsvps-------------">2.4.9.1. 
-                Event: list_rsvps
+            <h5>
+                Event: <code>list_rsvps</code>
             </h5>
             <p>
                 An HTTP response code and a JSON array of objects, each of which represents an an RSVP (ie one row of the event_attendee table). The response will contains the all available parameters from the internal representaion of the attendee. A field's value is the empty string or <code>null</code> if it has not been set.
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 <strong>HTTP/1.0 200 OK</strong>
 date: Sun, 08 Jan 2012 16:46:51 GMT
 content-length: 1533
@@ -2334,7 +2395,7 @@ server: Apache/2.0.63 (Unix) mod_ssl/2.0.63 OpenSSL/0.9.8e-fips-rhel5
 
 </samp>
 </pre>
-            <h4 id="-----------------Bundle-Specification-------------">2.4.10. 
+            <h4>
                 Bundle Specification
             </h4>
             <p>
@@ -2352,7 +2413,7 @@ server: Apache/2.0.63 (Unix) mod_ssl/2.0.63 OpenSSL/0.9.8e-fips-rhel5
             <p>
                 <code>cons_addr,cons_phone*,cons_email</code>
             </p>
-            <h4 id="-----------------Filter-Specification-------------">2.4.11. 
+            <h4>
                 Filter Specification
             </h4>
             <p>
@@ -2597,28 +2658,30 @@ server: Apache/2.0.63 (Unix) mod_ssl/2.0.63 OpenSSL/0.9.8e-fips-rhel5
             <p>
                 The following example filter would return only constituent records in the state of California or Nevada that had a subscribed email address:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 state_cd=(CA,NV),is_subscribed,cons_group=20
 </samp>
 </pre>
             <p>
                 Because filters contain the <kbd>=</kbd> sign and other characters which have significance in URLs, they must be encoded when being specified as a API call parameter. The above example when used in a URL and properly encoded, might look like:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/foo?<strong>filter=state_cd%3D%28CA%2CNV%29%2Cis_subscribed%2Ccons_group%3D20</strong>&amp;api_id=X&amp;api_mac=Y&amp;api_ts=N
 </samp>
 </pre>
         </div>
         <div class="major_section">
-            <h3 id="-----------------API-Reference-------------">2.5. 
+            <h3>
                 API Reference
             </h3>
-            <h4 id="-----------------Account-API-Calls-------------">2.5.1. 
+            <h4>
                 Account API Calls
             </h4><!-- check_credentials -->
             <div class="api_method">
-                <h5 id="---------------------check_credentials-----------------">2.5.1.1. 
-                    check_credentials
+                <h5>
+                    <code>check_credentials</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -2670,15 +2733,16 @@ http://XYZ/page/api/foo?<strong>filter=state_cd%3D%28CA%2CNV%29%2Cis_subscribed%
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 https://XYZ/page/api/account/check_credentials?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;userid=user1%40domain.com&amp;password=password1
 </samp>
 </pre>
             </div>
         </div><!-- create_account -->
         <div class="api_method">
-            <h5 id="-----------------create_account-------------">2.5.1.2. 
-                create_account
+            <h5>
+                <code>create_account</code>
             </h5>
             <div class="description">
                 <p>
@@ -2745,14 +2809,15 @@ https://XYZ/page/api/account/check_credentials?api_id=my_custom_app&amp;api_ts=1
             <p>
                 Example:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 https://XYZ/page/api/account/create_account?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;firstname=joe&amp;lastname=user&amp;email=joe%40example.com&amp;password=******&amp;zip=01234
 </samp>
 </pre>
         </div><!-- reset_password -->
         <div class="api_method">
-            <h5 id="-----------------reset_password-------------">2.5.1.3. 
-                reset_password
+            <h5>
+                <code>reset_password</code>
             </h5>
             <div class="description">
                 <p>
@@ -2792,14 +2857,15 @@ https://XYZ/page/api/account/create_account?api_id=my_custom_app&amp;api_ts=1179
             <p>
                 Example:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/account_password?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;userid=user1%40domain.com
 </samp>
 </pre>
         </div><!-- Set_password -->
         <div class="api_method">
-            <h5 id="-----------------set_password-------------">2.5.1.4. 
-                set_password
+            <h5>
+                <code>set_password</code>
             </h5>
             <div class="description">
                 <p>
@@ -2848,17 +2914,18 @@ http://XYZ/page/api/account_password?api_id=my_custom_app&amp;api_ts=1179943123&
             <p>
                 Example:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 https://XYZ/page/api/account/set_password?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;userid=user1%40domain.com&amp;password=password1
 </samp>
 </pre>
         </div>
-        <h4 id="-------------Branches-API-Calls---------">2.5.2. 
+        <h4>
             Branches API Calls
         </h4>
         <div class="api_method">
-            <h5 id="-----------------list_branches-------------">2.5.2.1. 
-                list_branches
+            <h5>
+                <code>list_branches</code>
             </h5>
             <div class="description">
                 <p>
@@ -2887,7 +2954,8 @@ https://XYZ/page/api/account/set_password?api_id=my_custom_app&amp;api_ts=117994
                     <p>
                         An XML-formatted description of zero or more branches:
                     </p>
-                    <pre>        <samp>
+                    <pre>
+        <samp>
 &lt;?xml version="1.0"?&gt;
 &lt;api&gt;
     &lt;branch id="1" modified_dt="2013-01-03 15:51:53"&gt;
@@ -2919,12 +2987,12 @@ https://XYZ/page/api/account/set_password?api_id=my_custom_app&amp;api_ts=117994
                     <samp>http://XYZ/page/api/branches/list_branches?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298526&amp;api_mac=ecf927ac5dbcb825068838e5019f24204dabb0e6</samp>
                 </div>
             </div>
-            <h4 id="-----------------Action-API-Calls-------------">2.5.3. 
+            <h4>
                 Action API Calls
             </h4><!-- check_credentials -->
             <div class="api_method">
-                <h5 id="---------------------add-----------------">2.5.3.1. 
-                    add
+                <h5>
+                    <code>add</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -2985,7 +3053,8 @@ https://XYZ/page/api/account/set_password?api_id=my_custom_app&amp;api_ts=117994
                 <p class="deferred">
                     Deferred Results: Never
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 POST /page/api/action/add?api_ver=1&amp;api_id=testfetch&amp;api_ts=1317752440&amp;api_mac=f4b0088409836fa79004c5cfdb7cff5ba6b4aea1 HTTP/1.1
 Host: example.bluestatedigital.com
 Accept-Encoding: identity
@@ -3004,7 +3073,8 @@ Content-type: application/json
 }
 </samp>
 </pre><br>
-                <pre><samp>
+                <pre>
+<samp>
 reply: 'HTTP/1.1 200 OK'
 Date: Tue, 04 Oct 2011 18:20:40 GMT
 Server: Apache/2.0.63 (Unix) mod_ssl/2.0.63 OpenSSL/0.9.7g PHP/5.2.6
@@ -3017,8 +3087,8 @@ Content-Type: application/json; charset=utf-8
 </pre>
             </div><!-- check_credentials -->
             <div class="api_method">
-                <h5 id="---------------------get-----------------">2.5.3.2. 
-                    get
+                <h5>
+                    <code>get</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3058,12 +3128,14 @@ Content-Type: application/json; charset=utf-8
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 GET /page/api/action/get?guid=36wQOB1IBoVOhIJVT73Xa4A&amp;api_ver=1&amp;api_id=testfetch&amp;api_ts=1317752808&amp;api_mac=3939374b345a28c851316273ba297b7cf143b84f HTTP/1.1
 Host: example.bluestatedigital.com
 </samp>
 </pre><br>
-                <pre><samp>
+                <pre>
+<samp>
 Date: Tue, 04 Oct 2011 18:26:48 GMT
 Server: Apache/2.0.63 (Unix) mod_ssl/2.0.63 OpenSSL/0.9.7g PHP/5.2.6
 X-Powered-By: PHP/5.2.6
@@ -3086,12 +3158,12 @@ Content-Type: application/json; charset=utf-8
 </samp>
 </pre>
             </div>
-            <h4 id="-----------------Circle--circle--API-Calls-------------">2.5.4. 
+            <h4>
                 Circle (circle) API Calls
             </h4><!-- list_circles -->
             <div class="api_method">
-                <h5 id="---------------------list_circles-----------------">2.5.4.1. 
-                    list_circles
+                <h5>
+                    <code>list_circles</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3137,14 +3209,15 @@ Content-Type: application/json; charset=utf-8
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/list_circles?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- get_cons_ids_for_circle -->
             <div class="api_method">
-                <h5 id="---------------------get_cons_ids_for_circle-----------------">2.5.4.2. 
-                    get_cons_ids_for_circle
+                <h5>
+                    <code>get_cons_ids_for_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3190,21 +3263,23 @@ http://XYZ/page/api/circle/list_circles?api_id=my_custom_app&amp;api_ts=11799431
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/get_cons_ids_for_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;circle_id=42
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42
 </samp>
 </pre>
             </div><!-- get_ext_ids_for_circle -->
             <div class="api_method">
-                <h5 id="---------------------get_ext_ids_for_circle-----------------">2.5.4.3. 
-                    get_ext_ids_for_circle
+                <h5>
+                    <code>get_ext_ids_for_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3256,14 +3331,15 @@ circle_id=42
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/get_ext_ids_for_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;circle_id=42&amp;ext_type=dwid
 </samp>
 </pre>
             </div><!-- set_cons_ids_for_circle -->
             <div class="api_method">
-                <h5 id="---------------------set_cons_ids_for_circle-----------------">2.5.4.4. 
-                    set_cons_ids_for_circle
+                <h5>
+                    <code>set_cons_ids_for_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3315,21 +3391,23 @@ http://XYZ/page/api/circle/get_ext_ids_for_circle?api_id=my_custom_app&amp;api_t
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/set_cons_ids_for_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_ids=13,47,521,1033,1045
 </samp>
 </pre>
             </div><!-- set_ext_ids_for_circle -->
             <div class="api_method">
-                <h5 id="---------------------set_ext_ids_for_circle-----------------">2.5.4.5. 
-                    set_ext_ids_for_circle
+                <h5>
+                    <code>set_ext_ids_for_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3387,21 +3465,23 @@ circle_id=42&amp;cons_ids=13,47,521,1033,1045
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/set_ext_ids_for_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321,2008001,414456
 </samp>
 </pre>
             </div><!-- add_cons_ids_to_circle -->
             <div class="api_method">
-                <h5 id="---------------------add_cons_ids_to_circle-----------------">2.5.4.6. 
-                    add_cons_ids_to_circle
+                <h5>
+                    <code>add_cons_ids_to_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3453,21 +3533,23 @@ circle_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321,2008001,414456
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/add_cons_ids_to_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_ids=13,47,521
 </samp>
 </pre>
             </div><!-- add_ext_ids_to_circle -->
             <div class="api_method">
-                <h5 id="---------------------add_ext_ids_to_circle-----------------">2.5.4.7. 
-                    add_ext_ids_to_circle
+                <h5>
+                    <code>add_ext_ids_to_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3525,21 +3607,23 @@ circle_id=42&amp;cons_ids=13,47,521
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/add_cons_ids_to_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div><!-- remove_cons_ids_from_circle -->
             <div class="api_method">
-                <h5 id="---------------------remove_cons_ids_from_circle-----------------">2.5.4.8. 
-                    remove_cons_ids_from_circle
+                <h5>
+                    <code>remove_cons_ids_from_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3591,21 +3675,23 @@ circle_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/remove_cons_ids_from_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_ids=13,47,521
 </samp>
 </pre>
             </div><!-- remove_ext_ids_from_circle -->
             <div class="api_method">
-                <h5 id="---------------------remove_ext_ids_from_circle-----------------">2.5.4.9. 
-                    remove_ext_ids_from_circle
+                <h5>
+                    <code>remove_ext_ids_from_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3663,21 +3749,23 @@ circle_id=42&amp;cons_ids=13,47,521
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/remove_ext_ids_from_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div><!-- move_cons_ids_to_circle -->
             <div class="api_method">
-                <h5 id="---------------------move_cons_ids_to_circle-----------------">2.5.4.10. 
-                    move_cons_ids_to_circle
+                <h5>
+                    <code>move_cons_ids_to_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3735,21 +3823,23 @@ circle_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/move_cons_ids_to_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 from_circle_id=42&amp;to_circle_id=45&amp;cons_ids=12772,1129,1983321
 </samp>
 </pre>
             </div><!-- move_ext_ids_to_circle -->
             <div class="api_method">
-                <h5 id="---------------------move_ext_ids_to_circle-----------------">2.5.4.11. 
-                    move_ext_ids_to_circle
+                <h5>
+                    <code>move_ext_ids_to_circle</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3813,21 +3903,23 @@ from_circle_id=42&amp;to_circle_id=45&amp;cons_ids=12772,1129,1983321
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/move_ext_ids_to_circle?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 from_circle_id=42&amp;to_circle_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div><!-- set_circle_administrator -->
             <div class="api_method">
-                <h5 id="---------------------set_circle_administrator-----------------">2.5.4.12. 
-                    set_circle_administrator
+                <h5>
+                    <code>set_circle_administrator</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3873,21 +3965,23 @@ from_circle_id=42&amp;to_circle_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/set_circle_administrator?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_id=45
 </samp>
 </pre>
             </div><!-- demote_circle_administrator -->
             <div class="api_method">
-                <h5 id="---------------------demote_circle_administrator-----------------">2.5.4.13. 
-                    demote_circle_administrator
+                <h5>
+                    <code>demote_circle_administrator</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3933,21 +4027,23 @@ circle_id=42&amp;cons_id=45
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/demote_circle_administrator?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_id=45
 </samp>
 </pre>
             </div><!-- set_circle_owner -->
             <div class="api_method">
-                <h5 id="---------------------set_circle_owner-----------------">2.5.4.14. 
-                    set_circle_owner
+                <h5>
+                    <code>set_circle_owner</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -3993,24 +4089,26 @@ circle_id=42&amp;cons_id=45
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/circle/set_circle_owner?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 circle_id=42&amp;cons_id=45
 </samp>
 </pre>
             </div>
-            <h4 id="-----------------Constituent--cons--API-Calls-------------">2.5.5. 
+            <h4>
                 Constituent (cons) API Calls
             </h4><!-- get_constituents_by_id -->
             <div class="api_method">
-                <h5 id="---------------------get_constituents_by_id-----------------">2.5.5.1. 
-                    get_constituents_by_id
+                <h5>
+                    <code>get_constituents_by_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4062,14 +4160,15 @@ circle_id=42&amp;cons_id=45
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013&amp;cons_ids=57,3882,31,132&amp;bundles=cons_addr,cons_phone
 </samp>
 </pre>
             </div>
             <div class="api_method">
-                <h5 id="---------------------get_constituents-----------------">2.5.5.2. 
-                    get_constituents
+                <h5>
+                    <code>get_constituents</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4123,8 +4222,8 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                 </div>
             </div><!-- get_constituents_by_ext_id -->
             <div class="api_method">
-                <h5 id="---------------------get_constituents_by_ext_id-----------------">2.5.5.3. 
-                    get_constituents_by_ext_id
+                <h5>
+                    <code>get_constituents_by_ext_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4182,14 +4281,15 @@ http://XYZ/page/api/cons/get_constituents_by_id?api_id=my_custom_app&amp;api_ts=
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_constituents_by_ext_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;ext_type=van_id&amp;ext_ids=f12772,l1129,1m983321&amp;bundles=cons_addr,cons_phone
 </samp>
 </pre>
             </div><!-- get_constituents_by_guid -->
             <div class="api_method">
-                <h5 id="---------------------get_constituents_by_guid-----------------">2.5.5.4. 
-                    get_constituents_by_guid
+                <h5>
+                    <code>get_constituents_by_guid</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4241,14 +4341,15 @@ http://XYZ/page/api/cons/get_constituents_by_ext_id?api_id=my_custom_app&amp;api
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_constituents_by_guid?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=61722c6a82a16779c956992e351ae1582f4a3cc1&amp;guids=ygdFPkyEdomzBhWEFZGREys&amp;bundles=cons_addr,cons_email
 </samp>
 </pre>
             </div><!-- get_updated_constituents -->
             <div class="api_method">
-                <h5 id="---------------------get_updated_constituents-----------------">2.5.5.5. 
-                    get_updated_constituents
+                <h5>
+                    <code>get_updated_constituents</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4300,14 +4401,15 @@ http://XYZ/page/api/cons/get_constituents_by_guid?api_id=my_custom_app&amp;api_t
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_updated_constituents?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=c1fd787ec5431781f1d601f6e3299fe083ca56c4&amp;changed_since=1179856723&amp;bundles=cons_email&amp;filter=state_cd%3DIA
 </samp>
 </pre>
             </div><!-- get_updated_constituent_ids -->
             <div class="api_method">
-                <h5 id="---------------------get_updated_constituent_ids-----------------">2.5.5.6. 
-                    get_updated_constituent_ids
+                <h5>
+                    <code>get_updated_constituent_ids</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4347,14 +4449,15 @@ http://XYZ/page/api/cons/get_updated_constituents?api_id=my_custom_app&amp;api_t
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_updated_constituent_ids?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=c1fd787ec5431781f1d601f6e3299fe083ca56c4&amp;changed_since=1179856723
 </samp>
 </pre>
             </div><!-- set_ext_ids -->
             <div class="api_method">
-                <h5 id="---------------------set_ext_ids-----------------">2.5.5.7. 
-                    set_ext_ids
+                <h5>
+                    <code>set_ext_ids</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4403,21 +4506,23 @@ http://XYZ/page/api/cons/get_updated_constituent_ids?api_id=my_custom_app&amp;ap
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/set_ext_ids?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 ext_type=van_id&amp;4322=12772&amp;3321=1129&amp;9217=1983321
 </samp>
 </pre>
             </div><!-- delete_constituents_by_id -->
             <div class="api_method">
-                <h5 id="---------------------delete_constituents_by_id-----------------">2.5.5.8. 
-                    delete_constituents_by_id
+                <h5>
+                    <code>delete_constituents_by_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4457,14 +4562,15 @@ ext_type=van_id&amp;4322=12772&amp;3321=1129&amp;9217=1983321
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/delete_constituents_by_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013&amp;cons_ids=57,3882,31,132
 </samp>
 </pre>
             </div><!-- get_custom_constituent_fields -->
             <div class="api_method">
-                <h5 id="---------------------get_custom_constituent_fields-----------------">2.5.5.9. 
-                    get_custom_constituent_fields
+                <h5>
+                    <code>get_custom_constituent_fields</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4496,14 +4602,15 @@ http://XYZ/page/api/cons/delete_constituents_by_id?api_id=my_custom_app&amp;api_
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_custom_constituent_fields?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=c1fd787ec5431781f1d601f6e3299fe083ca56c4&amp;
 </samp>
 </pre>
             </div><!-- upload_bulk_constituent_data -->
             <div class="api_method">
-                <h5 id="---------------------upload_bulk_constituent_data-----------------">2.5.5.10. 
-                    upload_bulk_constituent_data
+                <h5>
+                    <code>upload_bulk_constituent_data</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4574,12 +4681,14 @@ http://XYZ/page/api/cons/get_custom_constituent_fields?api_id=my_custom_app&amp;
                 <p>
                     URL:
                 </p>
-                <pre><samp>http://XYZ/page/api/cons/bulk_upload_constituent_data?has_header=1&amp;column_map=firstname,lastname,,email,&amp;api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013</samp>
+                <pre>
+<samp>http://XYZ/page/api/cons/bulk_upload_constituent_data?has_header=1&amp;column_map=firstname,lastname,,email,&amp;api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013</samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 FirstName,LastName,Affiliation,EmailAddress,Residence
 John,Smith,Democrat,johnsmith@johnsmith.com,California
 Johnny,Smithson,Independent,johnny_s@johnsmith.com,California
@@ -4587,8 +4696,8 @@ Johnny,Smithson,Independent,johnny_s@johnsmith.com,California
 </pre>
             </div><!-- get_bulk_constituent_data -->
             <div class="api_method">
-                <h5 id="---------------------get_bulk_constituent_data-----------------">2.5.5.11. 
-                    get_bulk_constituent_data
+                <h5>
+                    <code>get_bulk_constituent_data</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4697,14 +4806,16 @@ Johnny,Smithson,Independent,johnny_s@johnsmith.com,California
                         </dt>
                         <dd>
                             Where X is an external ID type (as set using the <code>set_ext_ids</code> API call). For example:
-                            <pre><samp>
+                            <pre>
+<samp>
 ext_van_id
 </samp>
 </pre>
                             <p>
                                 If a field ID has an asterisk appended to it, the field will be treated as required. Any constituent record that does not have a value for that field will not be included in the resulting data set. For example, a <code>fields</code> value of
                             </p>
-                            <pre><samp>
+                            <pre>
+<samp>
 firstname, lastname, primary_zip*, ext_van_id
 </samp>
 </pre>
@@ -4740,21 +4851,23 @@ firstname, lastname, primary_zip*, ext_van_id
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_bulk_constituent_data?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=88720bf92a70348cadf30c0cb375708fc9ab3911
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 format=csv&amp;fields=firstname,lastname,primary_email,ext_van_id
 </samp>
 </pre>
             </div><!-- set_constituent_data -->
             <div class="api_method">
-                <h5 id="---------------------set_constituent_data-----------------">2.5.5.12. 
-                    set_constituent_data
+                <h5>
+                    <code>set_constituent_data</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4779,7 +4892,8 @@ format=csv&amp;fields=firstname,lastname,primary_email,ext_van_id
                     <p>
                         Returns an HTTP status code indicating success or failure. On success, an XML document is returned describing the results of each insert. For example:
                     </p>
-                    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;api&gt;
     &lt;cons is_new="0" id="22"/&gt;
     &lt;cons is_new="1" id="1090"/&gt;
@@ -4799,14 +4913,16 @@ format=csv&amp;fields=firstname,lastname,primary_email,ext_van_id
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/set_constituent_data?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;api&gt;
     &lt;cons id="4382" <em>send_password="y"</em>&gt;
@@ -4830,8 +4946,8 @@ http://XYZ/page/api/cons/set_constituent_data?api_id=my_custom_app&amp;api_ts=11
                 </p>
             </div><!-- set_custom_constituent_fields -->
             <div class="api_method">
-                <h5 id="---------------------set_custom_constituent_fields-----------------">2.5.5.13. 
-                    set_custom_constituent_fields
+                <h5>
+                    <code>set_custom_constituent_fields</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4870,7 +4986,8 @@ http://XYZ/page/api/cons/set_constituent_data?api_id=my_custom_app&amp;api_ts=11
                     <p>
                         Returns an HTTP status code indicating success or failure. On success, the created or updated cons_field_value_ids are returned. For example:
                     </p>
-                    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;api&gt;
     &lt;cons_field_value is_new="0" id="1090"/&gt;
     &lt;cons_field_value is_new="1" id="1091"/&gt;
@@ -4890,14 +5007,16 @@ http://XYZ/page/api/cons/set_constituent_data?api_id=my_custom_app&amp;api_ts=11
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=1
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;api&gt;
     &lt;cons_field id="23"&gt;
@@ -4908,8 +5027,8 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
 </pre>
             </div><!-- merge_constituents_by_email -->
             <div class="api_method">
-                <h5 id="---------------------merge_constituents_by_email-----------------">2.5.5.14. 
-                    merge_constituents_by_email
+                <h5>
+                    <code>merge_constituents_by_email</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4942,7 +5061,8 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
                     <p>
                         Returns the constituent ID (<code>cons_id</code>) of the new, merged constituent in the following format:
                     </p>
-                    <pre>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    <pre>
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;api&gt;
         &lt;cons id="22"/&gt;
     &lt;/api&gt;
@@ -4954,8 +5074,8 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
                 </p>
             </div><!-- merge_constituents_by_id -->
             <div class="api_method">
-                <h5 id="---------------------merge_constituents_by_id-----------------">2.5.5.15. 
-                    merge_constituents_by_id
+                <h5>
+                    <code>merge_constituents_by_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -4980,7 +5100,8 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
                     <p>
                         Returns the constituent ID (<code>cons_id</code>) of the new, merged constituent in the following format:
                     </p>
-                    <pre>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    <pre>
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;api&gt;
         &lt;cons id="22"/&gt;
     &lt;/api&gt;
@@ -4992,8 +5113,8 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
                 </p>
             </div><!-- get_unsubscribed_constituents_by_group_id -->
             <div class="api_method">
-                <h5 id="---------------------get_unsubscribed_constituents_by_group_id-----------------">2.5.5.16. 
-                    get_unsubscribed_constituents_by_group_id
+                <h5>
+                    <code>get_unsubscribed_constituents_by_group_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5048,14 +5169,15 @@ http://XYZ/page/api/cons/set_custom_constituent_fields?api_id=my_custom_app&amp;
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/get_unsubscribed_constituents_by_group_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;group_id=5&amp;format=json
 </samp>
 </pre>
             </div><!-- email_register -->
             <div class="api_method">
-                <h5 id="---------------------email_register-----------------">2.5.5.17. 
-                    email_register
+                <h5>
+                    <code>email_register</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5128,14 +5250,15 @@ http://XYZ/page/api/cons/get_unsubscribed_constituents_by_group_id?api_id=my_cus
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/email_register?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;email=test@test.com&amp;is_subscribed=0&amp;format=json
 </samp>
 </pre>
             </div><!-- email_unsubscribe -->
             <div class="api_method">
-                <h5 id="---------------------email_unsubscribe-----------------">2.5.5.18. 
-                    email_unsubscribe
+                <h5>
+                    <code>email_unsubscribe</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5181,14 +5304,15 @@ http://XYZ/page/api/cons/email_register?api_id=my_custom_app&amp;api_ts=11799431
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/email_unsubscribe?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;email=test@test.com&amp;reason=User%20Requested
 </samp>
 </pre>
             </div><!-- email_lookup -->
             <div class="api_method">
-                <h5 id="---------------------email_lookup-----------------">2.5.5.19. 
-                    email_lookup
+                <h5>
+                    <code>email_lookup</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5264,14 +5388,15 @@ http://XYZ/page/api/cons/email_unsubscribe?api_id=my_custom_app&amp;api_ts=11799
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/email_lookup?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;format=json
 </samp>
 </pre>
             </div><!-- email_delete -->
             <div class="api_method">
-                <h5 id="---------------------email_delete-----------------">2.5.5.20. 
-                    email_delete
+                <h5>
+                    <code>email_delete</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5335,14 +5460,15 @@ http://XYZ/page/api/cons/email_lookup?api_id=my_custom_app&amp;api_ts=1179943123
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/email_delete?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;email=test@test.com
 </samp>
 </pre>
             </div><!-- address_register -->
             <div class="api_method">
-                <h5 id="---------------------address_register-----------------">2.5.5.21. 
-                    address_register
+                <h5>
+                    <code>address_register</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5424,14 +5550,15 @@ http://XYZ/page/api/cons/email_delete?api_id=my_custom_app&amp;api_ts=1179943123
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/address_register?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=65&amp;line1=280+Summer+Street&amp;city=Boston&amp;state=MA&amp;zip=02145-0934
 </samp>
 </pre>
             </div><!-- address_lookup -->
             <div class="api_method">
-                <h5 id="---------------------address_lookup-----------------">2.5.5.22. 
-                    address_lookup
+                <h5>
+                    <code>address_lookup</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5525,14 +5652,15 @@ http://XYZ/page/api/cons/address_register?api_id=my_custom_app&amp;api_ts=117994
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/address_lookup?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;state=MA&amp;city=boston
 </samp>
 </pre>
             </div><!-- address_delete -->
             <div class="api_method">
-                <h5 id="---------------------address_delete-----------------">2.5.5.23. 
-                    address_delete
+                <h5>
+                    <code>address_delete</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5614,14 +5742,15 @@ http://XYZ/page/api/cons/address_lookup?api_id=my_custom_app&amp;api_ts=11799431
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/address_delete?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;email=test@test.com
 </samp>
 </pre>
             </div><!-- phone_register -->
             <div class="api_method">
-                <h5 id="---------------------phone_register-----------------">2.5.5.24. 
-                    phone_register
+                <h5>
+                    <code>phone_register</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5691,14 +5820,15 @@ http://XYZ/page/api/cons/address_delete?api_id=my_custom_app&amp;api_ts=11799431
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/phone_register?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;phone=7812341234&amp;type=mobile&amp;is_subscribed=1
 </samp>
 </pre>
             </div><!-- phone_unsubscribe -->
             <div class="api_method">
-                <h5 id="---------------------phone_unsubscribe-----------------">2.5.5.25. 
-                    phone_unsubscribe
+                <h5>
+                    <code>phone_unsubscribe</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5738,14 +5868,15 @@ http://XYZ/page/api/cons/phone_register?api_id=my_custom_app&amp;api_ts=11799431
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/phone_unsubscribe?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;phone=5648974285
 </samp>
 </pre>
             </div><!-- phone_lookup -->
             <div class="api_method">
-                <h5 id="---------------------phone_lookup-----------------">2.5.5.26. 
-                    phone_lookup
+                <h5>
+                    <code>phone_lookup</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5821,14 +5952,15 @@ http://XYZ/page/api/cons/phone_unsubscribe?api_id=my_custom_app&amp;api_ts=11799
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/phone_lookup?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;format=json
 </samp>
 </pre>
             </div><!-- phone_delete -->
             <div class="api_method">
-                <h5 id="---------------------phone_delete-----------------">2.5.5.27. 
-                    phone_delete
+                <h5>
+                    <code>phone_delete</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5898,17 +6030,18 @@ http://XYZ/page/api/cons/phone_lookup?api_id=my_custom_app&amp;api_ts=1179943123
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons/phone_delete?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_id=34&amp;phone=1234567890
 </samp>
 </pre>
             </div><!-- Constituent Group Begin -->
-            <h4 id="-----------------Constituent-Group--cons_group--API-Calls-------------">2.5.6. 
-                Constituent Group (cons_group) API Calls
+            <h4>
+                Constituent Group (<code>cons_group</code>) API Calls
             </h4><!-- list_constituent_groups -->
             <div class="api_method">
-                <h5 id="---------------------list_constituent_groups-----------------">2.5.6.1. 
-                    list_constituent_groups
+                <h5>
+                    <code>list_constituent_groups</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5940,14 +6073,15 @@ http://XYZ/page/api/cons/phone_delete?api_id=my_custom_app&amp;api_ts=1179943123
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/list_constituent_groups?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- get_constituent_group -->
             <div class="api_method">
-                <h5 id="---------------------get_constituent_group-----------------">2.5.6.2. 
-                    get_constituent_group
+                <h5>
+                    <code>get_constituent_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -5987,14 +6121,15 @@ http://XYZ/page/api/cons_group/list_constituent_groups?api_id=my_custom_app&amp;
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/get_constituent_group?cons_group_id=72&amp;api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- get_constituent_group_by_name -->
             <div class="api_method">
-                <h5 id="---------------------get_constituent_group_by_name-----------------">2.5.6.3. 
-                    get_constituent_group_by_name
+                <h5>
+                    <code>get_constituent_group_by_name</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6034,14 +6169,15 @@ http://XYZ/page/api/cons_group/get_constituent_group?cons_group_id=72&amp;api_id
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/get_constituent_group_by_name?name=my_group_name&amp;api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- get_constituent_group_by_slug -->
             <div class="api_method">
-                <h5 id="---------------------get_constituent_group_by_slug-----------------">2.5.6.4. 
-                    get_constituent_group_by_slug
+                <h5>
+                    <code>get_constituent_group_by_slug</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6081,14 +6217,15 @@ http://XYZ/page/api/cons_group/get_constituent_group_by_name?name=my_group_name&
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/get_constituent_group_by_slug?slug=my_cons_group&amp;api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- rename_group -->
             <div class="api_method">
-                <h5 id="---------------------rename_group-----------------">2.5.6.5. 
-                    rename_group
+                <h5>
+                    <code>rename_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6134,14 +6271,15 @@ http://XYZ/page/api/cons_group/get_constituent_group_by_slug?slug=my_cons_group&
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/rename_group?cons_group_id=1&amp;new_name=mynewnameapi_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
             </div><!-- add_constituent_groups -->
             <div class="api_method">
-                <h5 id="---------------------add_constituent_groups-----------------">2.5.6.6. 
-                    add_constituent_groups
+                <h5>
+                    <code>add_constituent_groups</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6173,14 +6311,16 @@ http://XYZ/page/api/cons_group/rename_group?cons_group_id=1&amp;new_name=mynewna
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/add_constituent_groups?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;api&gt;
     &lt;cons_group&gt;
@@ -6191,8 +6331,8 @@ http://XYZ/page/api/cons_group/add_constituent_groups?api_id=my_custom_app&amp;a
 </pre>
             </div><!-- delete_constituent_groups -->
             <div class="api_method">
-                <h5 id="---------------------delete_constituent_groups-----------------">2.5.6.7. 
-                    delete_constituent_groups
+                <h5>
+                    <code>delete_constituent_groups</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6235,14 +6375,15 @@ http://XYZ/page/api/cons_group/add_constituent_groups?api_id=my_custom_app&amp;a
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/delete_constituent_groups?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=3c3452091bf7ff0e2be8b638694a187ca7c0a013&amp;cons_group_ids=42,43
 </samp>
 </pre>
             </div><!-- get_cons_ids_for_group -->
             <div class="api_method">
-                <h5 id="---------------------get_cons_ids_for_group-----------------">2.5.6.8. 
-                    get_cons_ids_for_group
+                <h5>
+                    <code>get_cons_ids_for_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6288,21 +6429,23 @@ http://XYZ/page/api/cons_group/delete_constituent_groups?api_id=my_custom_app&am
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/get_cons_ids_for_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_group_id=42
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42
 </samp>
 </pre>
             </div><!-- get_ext_ids_for_group -->
             <div class="api_method">
-                <h5 id="---------------------get_ext_ids_for_group-----------------">2.5.6.9. 
-                    get_ext_ids_for_group
+                <h5>
+                    <code>get_ext_ids_for_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6354,14 +6497,15 @@ cons_group_id=42
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/get_ext_ids_for_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;cons_group_id=42&amp;ext_type=dwid
 </samp>
 </pre>
             </div><!-- set_cons_ids_for_group -->
             <div class="api_method">
-                <h5 id="---------------------set_cons_ids_for_group-----------------">2.5.6.10. 
-                    set_cons_ids_for_group
+                <h5>
+                    <code>set_cons_ids_for_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6413,21 +6557,23 @@ http://XYZ/page/api/cons_group/get_ext_ids_for_group?api_id=my_custom_app&amp;ap
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/set_cons_ids_for_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42&amp;cons_ids=13,47,521,1033,1045
 </samp>
 </pre>
             </div><!-- set_ext_ids_for_group -->
             <div class="api_method">
-                <h5 id="---------------------set_ext_ids_for_group-----------------">2.5.6.11. 
-                    set_ext_ids_for_group
+                <h5>
+                    <code>set_ext_ids_for_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6485,21 +6631,23 @@ cons_group_id=42&amp;cons_ids=13,47,521,1033,1045
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/set_ext_ids_for_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321,2008001,414456
 </samp>
 </pre>
             </div><!-- add_cons_ids_to_group -->
             <div class="api_method">
-                <h5 id="---------------------add_cons_ids_to_group-----------------">2.5.6.12. 
-                    add_cons_ids_to_group
+                <h5>
+                    <code>add_cons_ids_to_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6551,21 +6699,23 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321,2008001,4144
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/add_cons_ids_to_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42&amp;cons_ids=13,47,521
 </samp>
 </pre>
             </div><!-- add_ext_ids_to_group -->
             <div class="api_method">
-                <h5 id="---------------------add_ext_ids_to_group-----------------">2.5.6.13. 
-                    add_ext_ids_to_group
+                <h5>
+                    <code>add_ext_ids_to_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6623,21 +6773,23 @@ cons_group_id=42&amp;cons_ids=13,47,521
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/add_cons_ids_to_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div><!-- remove_cons_ids_from_group -->
             <div class="api_method">
-                <h5 id="---------------------remove_cons_ids_from_group-----------------">2.5.6.14. 
-                    remove_cons_ids_from_group
+                <h5>
+                    <code>remove_cons_ids_from_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6689,21 +6841,23 @@ cons_group_id=45&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/remove_cons_ids_from_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42&amp;cons_ids=13,47,521
 </samp>
 </pre>
             </div><!-- remove_ext_ids_from_group -->
             <div class="api_method">
-                <h5 id="---------------------remove_ext_ids_from_group-----------------">2.5.6.15. 
-                    remove_ext_ids_from_group
+                <h5>
+                    <code>remove_ext_ids_from_group</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6761,24 +6915,26 @@ cons_group_id=42&amp;cons_ids=13,47,521
                 <p>
                     URL:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 http://XYZ/page/api/cons_group/remove_ext_ids_from_group?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
                 <p>
                     POST:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
 cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             </div>
-            <h4 id="-----------------Entity-API-Calls--entity--------------">2.5.7. 
+            <h4>
                 Entity API Calls (entity)
             </h4>
             <div class="api_method">
-                <h5 id="---------------------fetch-----------------">2.5.7.1. 
-                    fetch
+                <h5>
+                    <code>fetch</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6791,7 +6947,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <p class="url">
                     URL: /page/api/entity/fetch
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
     http://XYZ/page/api/entity/fetch/{class}/{pk1_name}/{pk1_value}/{pk2_name}/{pk2_value}/... (etc. for all primary key parts)
     </samp>
 </pre>
@@ -6806,12 +6963,14 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <p>
                     Example:
                 </p>
-                <pre><samp>
+                <pre>
+<samp>
     GET /page/api/entity/fetch/cons/cons_id/3908692 HTTP/1.1
     Accept: application/json
     </samp>
 </pre>
-                <pre><samp>
+                <pre>
+<samp>
     HTTP/1.0 200 OK
     Date: Fri, 31 Dec 1999 23:59:59 GMT
     Content-Type: application/json
@@ -6821,12 +6980,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
     </samp>
 </pre>
             </div>
-            <h4 id="-----------------Core-API-Calls--core--------------">2.5.8. 
+            <h4>
                 Core API Calls (core)
             </h4>
             <div class="api_method">
-                <h5 id="---------------------set_list-----------------">2.5.8.1. 
-                    set_list
+                <h5>
+                    <code>set_list</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6843,7 +7002,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         Parameters:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
     {
         "funds":
         [
@@ -6882,12 +7042,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     </p>
                 </div>
             </div>
-            <h4 id="-----------------Outreach--outreach--API-Calls-------------">2.5.9. 
+            <h4>
                 Outreach (outreach) API Calls
             </h4>
             <div class="api_method">
-                <h5 id="---------------------get_page_by_id-----------------">2.5.9.1. 
-                    get_page_by_id
+                <h5>
+                    <code>get_page_by_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6935,8 +7095,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------set_page_data-----------------">2.5.9.2. 
-                    set_page_data
+                <h5>
+                    <code>set_page_data</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -6984,12 +7144,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             <p>
                 When <code>id</code> is set the existing outreach page is updated, when it is not set a new outreach page is created.
             </p>
-            <h4 id="-----------------Share--share--API-Calls-------------">2.5.10. 
+            <h4>
                 Share (share) API Calls
             </h4>
             <div class="api_method">
-                <h5 id="---------------------list_top_recruiters-----------------">2.5.10.1. 
-                    list_top_recruiters
+                <h5>
+                    <code>list_top_recruiters</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7019,7 +7179,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         Returns zero or more recruitment records (see example response below).
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;api&gt;
     &lt;shareRecruiter&gt;
@@ -7064,12 +7225,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <samp>http://XYZ/page/api/share/list_top_recruiters?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298526&amp;api_mac=ecf927ac5dbcb825068838e5019f24204dabb0e6&amp;limit=10</samp>
                 </div>
             </div>
-            <h4 id="-----------------Share-API-Calls-------------">2.5.11. 
+            <h4>
                 Share API Calls
             </h4>
             <div class="api_method">
-                <h5 id="---------------------list_forms-----------------">2.5.11.1. 
-                    list_forms
+                <h5>
+                    <code>list_forms</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7089,7 +7250,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         An XML-formatted description of zero or more share forms:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 &lt;?xml version="1.0"?&gt;
 &lt;api&gt;
     &lt;share_form id="1" title="Default Share Form" slug="default-share"&gt;
@@ -7118,8 +7280,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------get_max_recipients-----------------">2.5.11.2. 
-                    get_max_recipients
+                <h5>
+                    <code>get_max_recipients</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7144,7 +7306,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         An XML block containing the maximum number of allowable recipients:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 &lt;?xml version="1.0"?&gt;
 &lt;api&gt;
     &lt;max_recipients_per_share&gt;10&lt;/max_recipients_per_share&gt;
@@ -7166,8 +7329,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------send_share-----------------">2.5.11.3. 
-                    send_share
+                <h5>
+                    <code>send_share</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7187,7 +7350,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         POST Data for the <code>send_share</code> call is structured as follows:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 &lt;?xml version="1.0"?&gt;
 &lt;api&gt;
     &lt;share_form id="1"&gt;
@@ -7227,7 +7391,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         An HTTP 200 code on success, or an HTTP 400 code on failure with errors specified as follows:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 &lt;?xml version="1.0"?&gt;
 &lt;api&gt;
     &lt;error&gt;Missing share form ID&lt;/error&gt;
@@ -7254,12 +7419,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <samp>http://XYZ/page/api/share/send_share?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298526&amp;api_mac=ecf927ac5dbcb825068838e5019f24204dabb0e6</samp>
                 </div>
             </div>
-            <h4 id="-----------------Signup--signup--API-Calls-------------">2.5.12. 
+            <h4>
                 Signup (signup) API Calls
             </h4>
             <div class="api_method">
-                <h5 id="---------------------list_forms-----------------0.15100545505993068">2.5.12.1. 
-                    list_forms
+                <h5>
+                    <code>list_forms</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7304,8 +7469,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------get_form-----------------">2.5.12.2. 
-                    get_form
+                <h5>
+                    <code>get_form</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7353,8 +7518,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------list_form_fields-----------------">2.5.12.3. 
-                    list_form_fields
+                <h5>
+                    <code>list_form_fields</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7402,8 +7567,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------signup_count-----------------">2.5.12.4. 
-                    signup_count
+                <h5>
+                    <code>signup_count</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7457,8 +7622,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------count_by_field-----------------">2.5.12.5. 
-                    count_by_field
+                <h5>
+                    <code>count_by_field</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7512,8 +7677,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------process_signup-----------------">2.5.12.6. 
-                    process_signup
+                <h5>
+                    <code>process_signup</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7533,7 +7698,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         POST Data for each signup form is structured as follows:
                     </p>
-                    <pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+                    <pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;api&gt;
   &lt;signup_form id="9"&gt;
     &lt;signup_form_field id="82"&gt;user@domain.com&lt;/signup_form_field&gt;
@@ -7577,7 +7743,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         Nothing on success (HTTP Status 200) or XML containing errors in the following format:
                     </p>
-                    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;api&gt;
     &lt;error&gt;
         &lt;signup_form_id&gt;9&lt;/signup_form_id&gt;
@@ -7610,8 +7777,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------get_signups_by_email-----------------">2.5.12.7. 
-                    get_signups_by_email
+                <h5>
+                    <code>get_signups_by_email</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7659,8 +7826,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------get_signups_by_form_id-----------------">2.5.12.8. 
-                    get_signups_by_form_id
+                <h5>
+                    <code>get_signups_by_form_id</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7708,8 +7875,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 </div>
             </div>
             <div class="api_method">
-                <h5 id="---------------------clone_form-----------------">2.5.12.9. 
-                    clone_form
+                <h5>
+                    <code>clone_form</code>
                 </h5>
                 <div class="description">
                     <p>
@@ -7757,7 +7924,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     <p>
                         The response is the ID of the newly created form:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
             &lt;signup_form&gt;
                 &lt;id&gt;1&lt;/id&gt;
             &lt;/signup_form&gt;
@@ -7779,8 +7947,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div>
         <div class="api_method">
-            <h5 id="-----------------set_cons_group-------------">2.5.12.10. 
-                set_cons_group
+            <h5>
+                <code>set_cons_group</code>
             </h5>
             <div class="description">
                 <p>
@@ -7841,12 +8009,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <samp>http://XYZ/page/api/signup/set_cons_group?signup_form_id=1&amp;api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b</samp>
             </div>
         </div>
-        <h4 id="-------------Event-API-Calls---------">2.5.13. 
+        <h4>
             Event API Calls
         </h4><!-- search_events -->
         <div class="api_method">
-            <h5 id="-----------------search_events-------------">2.5.13.1. 
-                search_events
+            <h5>
+                <code>search_events</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -7879,8 +8047,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- list_rsvps -->
         <div class="api_method">
-            <h5 id="-----------------list_rsvps-------------">2.5.13.2. 
-                list_rsvps
+            <h5>
+                <code>list_rsvps</code>
             </h5>
             <div class="description">
                 <p>
@@ -7928,8 +8096,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- create_event -->
         <div class="api_method">
-            <h5 id="-----------------create_event-------------">2.5.13.3. 
-                create_event
+            <h5>
+                <code>create_event</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8115,7 +8283,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     </dt>
                     <dd>
                         An array of days, each with the <code>start_datetime_system</code>, of the day and either a <code>duration</code> parameter or a <code>shifts</code> array as specified below. Example as follows:
-                        <pre><code>[
+                        <pre>
+<code>[
     {
         'start_datetime_system': '2033-12-01 00:00:00',
         'duration': '120'
@@ -8144,7 +8313,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     </dt>
                     <dd>
                         An array of shifts, each with three params <code>start_time</code>, <code>end_time</code>, and <code>capacity</code> as follows:
-                        <pre><code>[
+                        <pre>
+<code>[
     {
         'start_time':   '13:00:00',
         'end_time':     '14:00:00',
@@ -8180,8 +8350,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- update_event -->
         <div class="api_method">
-            <h5 id="-----------------update_event-------------">2.5.13.4. 
-                update_event
+            <h5>
+                <code>update_event</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8373,7 +8543,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     </dt>
                     <dd>
                         An array of days, each with the <code>start_datetime_system</code>, of the day and either a <code>duration</code> parameter or a <code>shifts</code> array as specified below. Example as follows:
-                        <pre><code>[
+                        <pre>
+<code>[
     {
         'start_datetime_system': '2033-12-01 00:00:00',
         'duration': '120'
@@ -8402,7 +8573,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                     </dt>
                     <dd>
                         An array of shifts, each with three params <code>start_time</code>, <code>end_time</code>, and <code>capacity</code> as follows:
-                        <pre><code>[
+                        <pre>
+<code>[
     {
         'start_time':   '13:00:00',
         'end_time':     '14:00:00',
@@ -8438,8 +8610,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_event_details -->
         <div class="api_method">
-            <h5 id="-----------------get_event_details-------------">2.5.13.5. 
-                get_event_details
+            <h5>
+                <code>get_event_details</code>
             </h5>
             <div class="description">
                 <p>
@@ -8507,7 +8679,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             <p>
                 Example:
             </p>
-            <pre>{
+            <pre>
+{
         "event_id_obfuscated": "rtt",
         "event_type_id": "1",
         "creator_cons_id": "12",
@@ -8578,8 +8751,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_event_parameter_details -->
         <div class="api_method">
-            <h5 id="-----------------get_event_parameter_details-------------">2.5.13.6. 
-                get_event_parameter_details
+            <h5>
+                <code>get_event_parameter_details</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8612,8 +8785,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_create_event_requirements -->
         <div class="api_method">
-            <h5 id="-----------------get_create_event_requirements-------------">2.5.13.7. 
-                get_create_event_requirements
+            <h5>
+                <code>get_create_event_requirements</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8646,8 +8819,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_update_event_requirements -->
         <div class="api_method">
-            <h5 id="-----------------get_update_event_requirements-------------">2.5.13.8. 
-                get_update_event_requirements
+            <h5>
+                <code>get_update_event_requirements</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8680,8 +8853,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_events_for_cons -->
         <div class="api_method">
-            <h5 id="-----------------get_events_for_cons-------------">2.5.13.9. 
-                get_events_for_cons
+            <h5>
+                <code>get_events_for_cons</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8714,8 +8887,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             </div>
         </div><!-- get_available_types -->
         <div class="api_method">
-            <h5 id="-----------------get_available_types-------------">2.5.13.10. 
-                get_available_types
+            <h5>
+                <code>get_available_types</code>
             </h5>
             <div class="description"></div>
             <p class="http_method">
@@ -8747,12 +8920,12 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
                 <samp>http://XYZ/page/api/event/get_available_types?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b</samp>
             </div>
         </div>
-        <h4 id="-------------VAN-Campaign-API-Calls---------">2.5.14. 
+        <h4>
             VAN Campaign API Calls
         </h4><!-- load_campaign_data -->
         <div class="api_method">
-            <h5 id="-----------------load_campaign_data-------------">2.5.14.1. 
-                load_campaign_data
+            <h5>
+                <code><a name="load_campaign_data" id="load_campaign_data"></a>load_campaign_data</code>
             </h5>
             <div class="description">
                 <p>
@@ -8801,7 +8974,8 @@ cons_group_id=42&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/van_campaign/load_campaign_data?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;refresh_universe=1
 </samp>
 </pre>
@@ -8813,8 +8987,8 @@ http://XYZ/page/api/van_campaign/load_campaign_data?api_id=my_custom_app&amp;api
             </p>
         </div><!-- update_universe -->
         <div class="api_method">
-            <h5 id="-----------------update_universe-------------">2.5.14.2. 
-                update_universe
+            <h5>
+                <a name="update_universe" id="update_universe"></a><code>update_universe</code>
             </h5>
             <div class="description">
                 <p>
@@ -8863,14 +9037,15 @@ http://XYZ/page/api/van_campaign/load_campaign_data?api_id=my_custom_app&amp;api
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/van_campaign/update_universe?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;universe_id=123456-12345678&amp;filename=file.ext
 </samp>
 </pre>
         </div><!-- file_ready_for_download -->
         <div class="api_method">
-            <h5 id="-----------------file_ready_for_download-------------">2.5.14.3. 
-                file_ready_for_download
+            <h5>
+                <a name="file_ready_for_download" id="file_ready_for_download"></a><code>file_ready_for_download</code>
             </h5>
             <div class="description">
                 <p>
@@ -8913,14 +9088,15 @@ http://XYZ/page/api/van_campaign/update_universe?api_id=my_custom_app&amp;api_ts
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/van_campaign/file_ready_for_download?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;filename=file.ext
 </samp>
 </pre>
         </div><!-- get_van_campaign_id -->
         <div class="api_method">
-            <h5 id="-----------------get_van_campaign_id-------------">2.5.14.4. 
-                get_van_campaign_id
+            <h5>
+                <a name="get_van_campaign_id" id="get_van_campaign_id"></a><code>get_van_campaign_id</code>
             </h5>
             <div class="description">
                 <p>
@@ -8963,17 +9139,18 @@ http://XYZ/page/api/van_campaign/file_ready_for_download?api_id=my_custom_app&am
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/van_campaign/get_van_campaign_id?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171&amp;van_campaign_id=99
 </samp>
 </pre>
         </div>
-        <h4 id="-------------Wrappers-API-Calls---------">2.5.15. 
+        <h4>
             Wrappers API Calls
         </h4><!-- list_wrappers -->
         <div class="api_method">
-            <h5 id="-----------------list_wrappers-------------">2.5.15.1. 
-                list_wrappers
+            <h5>
+                <code>list_wrappers</code>
             </h5>
             <div class="description">
                 <p>
@@ -9008,17 +9185,18 @@ http://XYZ/page/api/van_campaign/get_van_campaign_id?api_id=my_custom_app&amp;ap
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/wrappers/list_wrappers?api_id=my_custom_app&amp;api_ts=1179943123&amp;api_mac=7c2b2e1f825c8946ce9e3bb8607c58ac27cb5171
 </samp>
 </pre>
         </div>
-        <h4 id="-------------Contribution-API-Calls---------">2.5.16. 
+        <h4>
             Contribution API Calls
         </h4><!-- add_external_contribution -->
         <div class="api_method">
-            <h5 id="-----------------add_external_contribution-------------">2.5.16.1. 
-                add_external_contribution
+            <h5>
+                <code>add_external_contribution</code>
             </h5>
             <div class="description">
                 <p>
@@ -9237,7 +9415,8 @@ http://XYZ/page/api/wrappers/list_wrappers?api_id=my_custom_app&amp;api_ts=11799
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/add_external_contribution?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
@@ -9249,8 +9428,8 @@ http://XYZ/page/api/contribution/add_external_contribution?api_ver=1&amp;api_id=
             </p><samp>{ 'summary': { 'sucesses':40, 'failures':1, 'missing_ids':3 }, 'errors': { 'UNIQUE_ID_1234567890':['Parameter source is expected to be a list of strings', 'Parameter email does not appear to be a valid email address.'] } }</samp>
         </div><!-- get_contributions -->
         <div class="api_method">
-            <h5 id="-----------------get_contributions-------------">2.5.16.2. 
-                get_contributions
+            <h5>
+                <code>get_contributions</code>
             </h5>
             <div class="description">
                 <p>
@@ -9544,7 +9723,8 @@ http://XYZ/page/api/contribution/add_external_contribution?api_ver=1&amp;api_id=
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/get_contributions?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
@@ -9594,8 +9774,8 @@ http://XYZ/page/api/contribution/get_contributions?api_ver=1&amp;api_id=my_custo
             </p><samp>{ "contributions": [ { "stg_contribution_id": 1, "cons_id": 1, "date": "2012-07-19 00:05:55, "contribution_key": "GdAzDC9hHwYaQlszcY", "ip_address": "127.0.0.1", "prefix": null, "first_name": "John", "middle_name": null, "last_name": "Doe", "suffix": null, "email": "john@doe.com", "amount": "25.00", "tickets": null, "occupation": null, "employer": null, "phone": 1238675309, "addr1": "123 First Ave", "addr2": null, "city": "landville", "state_cd": "AA", "postal_code": "00000", "country": "AA", "card_type": "vs", "card_last_4": "0000", "custom1": null, "custom2": null, "custom3": null, "source": ["somepage"], "custom_country_field1": null, "custom_country_field2": null, "bill_ref_num": "74B49741TE455931Y", "page_name": "General donation page", "note": null, "outreach": null, "ext_id": null, "facebook": null } ] }</samp>
         </div><!-- quick_donate_import -->
         <div class="api_method">
-            <h5 id="-----------------quick_donate_import-------------">2.5.16.3. 
-                quick_donate_import
+            <h5>
+                <code>quick_donate_import</code>
             </h5>
             <div class="description">
                 <p>
@@ -9673,14 +9853,15 @@ http://XYZ/page/api/contribution/get_contributions?api_ver=1&amp;api_id=my_custo
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/quick_donate_import?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
         </div><!-- get_custom_form_fields -->
         <div class="api_method">
-            <h5 id="-----------------get_custom_form_fields-------------">2.5.16.4. 
-                get_custom_form_fields
+            <h5>
+                <code>get_custom_form_fields</code>
             </h5>
             <div class="description">
                 <p>
@@ -9726,7 +9907,8 @@ http://XYZ/page/api/contribution/quick_donate_import?api_ver=1&amp;api_id=my_cus
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/get_custom_form_fields?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
@@ -9735,8 +9917,8 @@ http://XYZ/page/api/contribution/get_custom_form_fields?api_ver=1&amp;api_id=my_
             </p><samp>&lt;app_form_field id="1" modified_dt="1223651690"&gt; &lt;app_form_id&gt;1&lt;/app_form_id&gt; &lt;type&gt;text&lt;/test&gt; &lt;settings&gt; &lt;label&gt;&lt;![CDATA[Program]]&gt;&lt;/label&gt; &lt;valueIfBlank&gt;&lt;![CDATA[General]]&gt;&lt;/valueIfBlank&gt; &lt;/settings&gt; &lt;display_order&gt;1&lt;/display_order&gt; &lt;/app_form_field&gt;</samp>
         </div><!-- create_recurring -->
         <div class="api_method">
-            <h5 id="-----------------create_recurring-------------">2.5.16.5. 
-                create_recurring
+            <h5>
+                <code>create_recurring</code>
             </h5>
             <div class="description">
                 <p>
@@ -9814,14 +9996,15 @@ http://XYZ/page/api/contribution/get_custom_form_fields?api_ver=1&amp;api_id=my_
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/create_recurring?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
         </div><!-- quick_donate_sms_optin_get -->
         <div class="api_method">
-            <h5 id="-----------------quick_donate_sms_optin_get-------------">2.5.16.6. 
-                quick_donate_sms_optin_get
+            <h5>
+                <code>quick_donate_sms_optin_get</code>
             </h5>
             <div class="description">
                 <p>
@@ -9892,14 +10075,15 @@ http://XYZ/page/api/contribution/create_recurring?api_ver=1&amp;api_id=my_custom
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/quick_donate_sms_optin_get?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
         </div><!-- quick_donate_sms_optin_set -->
         <div class="api_method">
-            <h5 id="-----------------quick_donate_sms_optin_set-------------">2.5.16.7. 
-                quick_donate_sms_optin_set
+            <h5>
+                <code>quick_donate_sms_optin_set</code>
             </h5>
             <div class="description">
                 <p>
@@ -9982,14 +10166,15 @@ http://XYZ/page/api/contribution/quick_donate_sms_optin_get?api_ver=1&amp;api_id
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/quick_donate_sms_optin_set?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
         </div><!-- get_quickdonate_token -->
         <div class="api_method">
-            <h5 id="-----------------get_quickdonate_token-------------">2.5.16.8. 
-                get_quickdonate_token
+            <h5>
+                <code>get_quickdonate_token</code>
             </h5>
             <div class="description">
                 <p>
@@ -10035,17 +10220,18 @@ http://XYZ/page/api/contribution/quick_donate_sms_optin_set?api_ver=1&amp;api_id
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/contribution/get_quickdonate_token?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;api_mac=95ed2067d75a49943b851c88c84fccbf767
 </samp>
 </pre>
         </div>
-        <h4 id="-------------Mailer-API-Calls---------">2.5.17. 
+        <h4>
             Mailer API Calls
         </h4><!-- get_stats -->
         <div class="api_method">
-            <h5 id="-----------------get_stats-------------">2.5.17.1. 
-                get_stats
+            <h5>
+                <code>get_stats</code>
             </h5>
             <div class="description">
                 <p>
@@ -10099,7 +10285,8 @@ http://XYZ/page/api/contribution/get_quickdonate_token?api_ver=1&amp;api_id=my_c
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/mailer/get_stats?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;mailing_ids=2,3&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
@@ -10109,7 +10296,8 @@ http://XYZ/page/api/mailer/get_stats?api_ver=1&amp;api_id=my_custom_app&amp;api_
             <p>
                 URL:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/mailer/get_stats?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1274298735&amp;mailing_ids=4&amp;stats_mode=unique&amp;api_mac=95ed2067d75a49943b851c88c84fccbf7673281b
 </samp>
 </pre>
@@ -10118,22 +10306,22 @@ http://XYZ/page/api/mailer/get_stats?api_ver=1&amp;api_id=my_custom_app&amp;api_
             </p><samp>[ { "mailing_id":4, "mailing_send_id":7, "mailing_name":"Testing Stats API", "subject":"Hi Friend!", "sent_dt":"2012-10-26 14:41:41", "from_name":"Test Mailer", "from_email":"user@example.com", "recipient_count":1, "number_opens":1, "number_clicks":0, "number_unsubs":0 } ]</samp>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Understanding-the-api_mac-------------">2.6. 
+            <h3>
                 Understanding the api_mac
             </h3>
-            <h4 id="-----------------Purpose-------------">2.6.1. 
+            <h4>
                 Purpose
             </h4>
             <p>
                 It is dangerous to send passwords and API keys over the internet. If they are intercepted in transit, they create an enormous security risk. To reduce this risk, the actual "secret code" (also known as the api_secret) is never transmitted during an API call. Instead, the calling party generates a message and uses the api_secret to create a cryptographically secure "signature" of the message. When the server receives the API call, it verifies that the signature was actually generated using the correct api_secret. If it was not, the request is rejected.
             </p>
-            <h4 id="-----------------Generating-an-api_mac-------------">2.6.2. 
+            <h4>
                 Generating an api_mac
             </h4>
             <p>
                 There are three steps to generating an api_mac. The first is to create the "signing_string". This string is a reformatted version of the request you are making. The second step is to sign the "signing string" using the api_secret and the HMAC-SHA1 algorithm. The result is the api_mac. The third step is simply to assemble the request, including the newly generated api_mac.
             </p>
-            <h5 id="-----------------Step-1--Create-the-signing-string-------------">2.6.2.1. 
+            <h5>
                 Step 1: Create the signing string
             </h5>
             <p>
@@ -10147,7 +10335,8 @@ http://XYZ/page/api/mailer/get_stats?api_ver=1&amp;api_id=my_custom_app&amp;api_
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 my_custom_app
 </samp>
 </pre>
@@ -10159,7 +10348,8 @@ my_custom_app
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 1179962001
 </samp>
 </pre>
@@ -10171,7 +10361,8 @@ my_custom_app
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 /page/api/cons/get_constituents_by_ext_id
 </samp>
 </pre>
@@ -10183,7 +10374,8 @@ my_custom_app
                     <p>
                         Example:
                     </p>
-                    <pre><samp>
+                    <pre>
+<samp>
 api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1179962001&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
@@ -10192,14 +10384,15 @@ api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1179962001&amp;ext_type=van_id&amp
             <p>
                 Taking the four pieces above, we put them together into a single string, separated by newlines (note that your signing string should contain actual newline characters, not the text "\n"):
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 my_custom_app\n1179962001\n/page/api/cons/get_constituents_by_ext_id\napi_ver=1&amp;api_id=my_custom_app&amp;api_ts=1179962001&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
             <p>
                 The signing string will be the same regardless of whether the API call uses GET or POST.
             </p>
-            <h5 id="-----------------Step-2--Use-HMAC-SHA1-to-get-the-api_mac-------------">2.6.2.2. 
+            <h5>
                 Step 2: Use HMAC-SHA1 to get the api_mac
             </h5>
             <p>
@@ -10210,7 +10403,8 @@ my_custom_app\n1179962001\n/page/api/cons/get_constituents_by_ext_id\napi_ver=1&
                     PHP 5.1.2+:
                 </dt>
                 <dd>
-                    <pre><samp>
+                    <pre>
+<samp>
 $api_mac = hash_hmac('sha1', $signing_string, $api_secret);
 </samp>
 </pre>
@@ -10219,7 +10413,8 @@ $api_mac = hash_hmac('sha1', $signing_string, $api_secret);
                     PHP 5.1.1 and earlier:
                 </dt>
                 <dd>
-                    <pre><samp>
+                    <pre>
+<samp>
 require_once 'Crypt/HMAC.php';
 $signer = new Crypt_HMAC($api_secret, "sha1");
 $api_mac = $signer-&gt;hash($signing_string);
@@ -10230,7 +10425,8 @@ $api_mac = $signer-&gt;hash($signing_string);
                     Perl:
                 </dt>
                 <dd>
-                    <pre><samp>
+                    <pre>
+<samp>
 use Digest::HMAC_SHA1;
 $api_mac = hmac_sha1_hex($signing_string, $api_secret);
 </samp>
@@ -10240,7 +10436,8 @@ $api_mac = hmac_sha1_hex($signing_string, $api_secret);
                     Python 3:
                 </dt>
                 <dd>
-                    <pre><samp>
+                    <pre>
+<samp>
 import hmac, hashlib
 api_mac = hmac.new(api_secret.encode(), signing_string.encode(), hashlib.sha1).hexdigest()
 </samp>
@@ -10250,7 +10447,8 @@ api_mac = hmac.new(api_secret.encode(), signing_string.encode(), hashlib.sha1).h
                     Ruby:
                 </dt>
                 <dd>
-                    <pre><samp>
+                    <pre>
+<samp>
 require 'openssl'
 api_mac = OpenSSL::HMAC.hexdigest('sha1', api_secret, signing_string)
 </samp>
@@ -10260,17 +10458,18 @@ api_mac = OpenSSL::HMAC.hexdigest('sha1', api_secret, signing_string)
             <p>
                 Different HMAC-SHA1 implementations return the digest in different formats. The BSD API can support either hexadecimal (40 character hex string) or base64 encoding. If you use base64 encoding, be sure to escape any special characters before putting the string into a URL. Do not attempt to use a binary (unencoded) digest in a URL.
             </p>
-            <h5 id="-----------------Step-3--Assemble-the-request-------------">2.6.2.3. 
+            <h5>
                 Step 3: Assemble the request
             </h5>
             <p>
                 Finally, assemble the full request. The api_id, api_ts, and api_mac parameters ALWAYS go into the URL of the API request, even if the other API call parameters are sent via POST variables. For the purposes of our example, we'll assume that the api_mac generated by the above process was 955e6266d18921a25feb2bebeaa8d5e2bfb518c4. In this case, the final URL for the API call would be:
             </p>
-            <pre><samp>
+            <pre>
+<samp>
 http://XYZ/page/api/cons/get_constituents_by_ext_id?api_ver=1&amp;api_id=my_custom_app&amp;api_ts=1179962001&amp;api_mac=955e6266d18921a25feb2bebeaa8d5e2bfb518c4&amp;ext_type=van_id&amp;ext_ids=12772,1129,1983321
 </samp>
 </pre>
-            <h4 id="-----------------Code-Samples-and-Libraries-------------">2.6.3. 
+            <h4>
                 Code Samples and Libraries
             </h4>
             <p>
@@ -10313,7 +10512,7 @@ http://XYZ/page/api/cons/get_constituents_by_ext_id?api_ver=1&amp;api_id=my_cust
             </p>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-HTTP-Status-Codes-------------">2.7. 
+            <h3>
                 Common HTTP Status Codes
             </h3>
             <p>
@@ -10377,7 +10576,7 @@ http://XYZ/page/api/cons/get_constituents_by_ext_id?api_ver=1&amp;api_id=my_cust
             </dl>
         </div>
         <div class="major_section">
-            <h3 id="-----------------Common-API-calling-issues-------------">2.8. 
+            <h3>
                 Common API calling issues
             </h3>
             <ul>
@@ -10387,6 +10586,3 @@ http://XYZ/page/api/cons/get_constituents_by_ext_id?api_ver=1&amp;api_id=my_cust
                 </li>
             </ul>
         </div>
-
-
-
