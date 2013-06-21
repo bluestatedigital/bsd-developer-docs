@@ -1,28 +1,27 @@
-
-        <h2>
+<h2>
             Blue State Digital Trusted API
         </h2>
-        <div class="major_section">
-            <h3>
+<div class="major_section">
+<h3>
                 Overview
             </h3>
         </div>
-        <div class="major_section">
-            <h3>
+<div class="major_section">
+<h3>
                 Common Record Formats
             </h3>
-            <p>
+<p>
                 Certain types of data are returned by multiple API requests. These record formats are defined below. (<small>note: All times returned by the API will be in the system timezone</small>)
-            </p>
-            <h4>
-                Error messages
+</p>
+<h4>
+Error messages
             </h4>
-            <h5>
+<h5>
                 Generic Graph API Errors
-            </h5>
-            <p>
+</h5>
+<p>
                 Error messages from the graph API will have <code>error</code> and <code>error_description</code> fields in their JSON response. Here is an example of an error caused by accessing a Graph page that requires HTTPS over an insecure connection:
-            </p>
+</p>
             <pre>
 <samp>
 {
