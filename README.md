@@ -169,25 +169,10 @@ my_func({
                             <code>radius</code> (required)
                         </dt>
                         <dd>
-                            The distance to search from the center of <code>zip</code>.<!-- Assumed to be in miles if <code>radius_unit</code> is not specified.-->
+                            The distance to search from the center of <code>zip</code>.
                         </dd>
                     </dl>
-                </div><!--
-<div class="parameters">
-<p>Query Parameters:</p>
-<dl>
-
-<dt><code>radius_unit</code> (optional)</dt>
-<dd>The unit for the radius parameter - either <code>mi</code> (miles)
-or <code>km</code> kilometers. If this is not specified, miles is assumed.</dd>
-
-<dt><code>state_cd</code> (optional)</dt>
-<dd>If state_cd is present, the circles returned will be limited to circles in
-the given radius that also have zip codes in the specified state_cd.</dd>
-
-</dl>
-</div>
--->
+                </div>
                 <div class="returns">
                     <p>
                         Returns:
@@ -232,95 +217,7 @@ http://XYZ/page/graph/circles/by_zip/12345/20
                         This request can return a <code>rate_limit_exceeded</code> error, or an <code>invalid_parameters</code> error if the zip code is invalid or the zip or radius path parameters are missing.
                     </p>
                 </div>
-            </div><!-- /circles/by_coordinates -->
-            <!--
-
-<div class="api_method">
-<h5><code>/circles/by_coordinates/$lat,$long/$radius</code></h5>
-
-<div class="description">
-<p>Lists all circles within a given radius of a given center point, specified
-as a zip code (U.S. assumed) or a latitude/longitude pair. Results can also be
-filtered to be in a specific state by passing a <code>state_cd</code>
-query parameter.</p>
-</div>
-
-<p class="http_method">Method: <code>GET</code></p>
-
-<p class="url">URL: /page/graph/circles/by_coordinates/$lat,$long/$radius</p>
-
-<div class="parameters">
-<p>Path Parameters:</p>
-<dl>
-
-<dt><code>latitude,longitude</code> (required)</dt>
-<dd>The latitude and longitude to use as the center for the radius search.</dd>
-
-<dt><code>radius</code> (required)</dt>
-<dd>The distance to search from the supplied center point. Assumed to be in miles if <code>radius_unit</code> is not specified.</dd>
-
-
-</dl>
-</div>
-
-<div class="parameters">
-<p>Query Parameters:</p>
-<dl>
-
-<dt><code>radius_unit</code> (optional)</dt>
-<dd>The unit for the radius parameter - either <code>mi</code> (miles) or <code>km</code> kilometers. If this is not specified, miles is assumed.</dd>
-
-<dt><code>state_cd</code> (optional)</dt>
-<dd>If state_cd is present, get_circles_by_radius will limit the circles
-returned to circles in the given radius that also have zip codes in the
-specified state_cd.</dd>
-
-</dl>
-</div>
-
-<div class="returns">
-<p>Returns:</p>
-<p>Returns one <code>circle</code> element (see Common Record Formats) for each
-circle that matches the radius search. In addition to the core record, each
-element also contains a <code>distance</code> element for the distance from the
-center point. The results are sorted by distance from closest to farthest.</p>
-</div>
-
-<div class="example">
-<p>Example:</p>
-
-<pre><samp>
-http://XYZ/page/graph/circles/by_coordinates/38.8886794,-77.0258704/20
-</samp></pre>
-
-<pre><samp>
-{
-   "data":[
-      {
-         "slug":"smithsonian",
-         "distance":0,
-         "name":"smithsonian circle",
-         "description":"Fans of the Smithsonian",
-         "circle_type":0,
-         "member_count":612,
-         "create_dt":"2009-11-10 11:14:50",
-         "modified_dt":"2009-11-11 18:10:13"
-      }
-   ]
-}
-</samp></pre>
-</div>
-
-<div class="errors">
-<p>Errors:</p>
-
-<p>This request can return a <code>rate_limit_exceeded</code> error, or
-an <code>invalid_parameters</code> error if the latitude, longitude, or radius
-path parameters are missing.</p>
-</div>
-
-</div>
--->
+            </div><
             <h4>
                 Constituent Graph API
             </h4><!-- /me/circles -->
