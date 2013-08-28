@@ -1,0 +1,40 @@
+{
+    "api_version": 1,
+    "status": "success",
+    "redirect_url": "https:...",
+    //this object contains the same json data contained in the action_code/td url params (although I don"t know what that is off the top of my head--Xiao?). the object contents are sent to Optimizely and Google Analytics for reporting.
+    "reporting_data": {
+        "action_code": "BgpYQRENBEERWl9bbhVSBgYUAR8E", //BSD API only, OFA API will not contains this property
+        "td": {
+            "firstname": "Xiao",
+            "lastname": "Yu",
+            "email": "xiao@yu.name",
+            "phone": "6177929000",
+            "addr1": "15 Howard St.",
+            "addr2": "Unit #3",
+            "city": "Cambridge",
+            "state": "MA",
+            "zip": "02139",
+            "country": "US",
+            "transaction_amt": 12.34,
+            "is_recurring": "0",
+            "contribution_key": "HYrsBu_M-89u8TbI1c",
+            "source": null,
+            "subsource": null,
+            "contribution_page_id": "1",
+            "modulename": "contribution",
+            "formname": "Default Fundraising Page",
+            "pagetype": "1",
+            "pageamounts": [
+                10,
+                25,
+                50,
+                100,
+                250,
+                1000,
+                4
+            ],
+            "used_quick_donate": false
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "api_version": 1,
+    "status": "success",
+    "token_raw": "RAW_TOKEN_FROM_PAYMENT_GATEWAY",
+    "token_info": {
+        "account_last_four": "1111",
+        "cc_type_cd": "vs",
+        "cc_expir_month": "06",
+        "cc_expir_year": "2013",
+        "firstname": "Xiao",
+        "lastname": "Yu",
+        "addr1": "15 Howard St.",
+        "addr2": "Unit #3",
+        "city": "Cambridge",
+        "state": "MA",
+        "zip": "02139",
+        "country": "US",
+        "email": "xiao@yu.name",
+        "phone": "6177929000",
+        "employer": "Blue State Digital",
+        "occupation": "Developer"
+    }
+}

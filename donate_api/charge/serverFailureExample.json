@@ -1,0 +1,6 @@
+//Unclear when this would show up but it's a catch all
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"unhandled"
+}

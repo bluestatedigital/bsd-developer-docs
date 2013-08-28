@@ -1,0 +1,6 @@
+//Resubmit with dupe_ok=1
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"duplicate"
+}

@@ -1,0 +1,6 @@
+{
+    "api_version": 1,
+    "status": "fail",
+    "code": "notoken",
+    "message": "Could not generate charge token."
+}

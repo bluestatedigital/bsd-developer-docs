@@ -1,0 +1,10 @@
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"gateway",
+    "gateway_response":{
+        "status":"decline", //Possible values: error/decline/review/unknown
+        "code":"...", //Status code from gateway
+        "message":"...", //Corresponding message from gateway
+    }
+}

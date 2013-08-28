@@ -1,0 +1,64 @@
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"validation",
+    "field_errors":[
+        {
+            "field": "firstname",
+            "message":"required field"
+        },
+        {
+            "field": "lastname",
+            "message":"required field"
+        },
+        {
+            "field": "addr1",
+            "message":"required field"
+        },
+        {
+            "field": "city",
+            "message":"required field"
+        },
+        {
+            "field": "zip",
+            "message":"required field"
+        },
+        {
+            "field": "state_cd",
+            "message":"required field"
+        },
+        {
+            "field": "email",
+            "message":"required field"
+        },
+        {
+            "field": "amount_group",
+            "message":"total amount must be between $1 and $4,800"
+        },
+        {
+            "field": "employer",
+            "message":"required field"
+        },
+        {
+            "field": "occupation",
+            "message":"required field"
+        },
+        {
+            "field": "cc_number",
+            "message":"required field"
+        },
+        {
+            "field": "cc_expir_group",
+            "message":"required field"
+        },
+        {
+            "field": "cc_type_cd_group",
+            "message":"invalid or unsupported card type"
+        },
+        {
+          //when a recurring page slug is provided but recurring_acknowledge is not set to 1
+            "field":"recurring_acknowledge",
+            "message":"You must check the box below to set up a recurring contribution."
+        }
+    ]
+}
