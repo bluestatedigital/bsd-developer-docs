@@ -306,7 +306,7 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <pre>
 <samp>
-/page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;<strong>guid=HASH</strong>
+/page/graph/addrsvp?event_id=6&amp;will_attend=1&amp;<strong>guid=HASH</strong>
 </samp>
 </pre>
                         <p>
@@ -314,7 +314,7 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <pre>
 <samp>
-/page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;<strong>email=user@example.com&amp;zip=02210</strong>
+/page/graph/addrsvp?event_id=6&amp;will_attend=1&amp;<strong>email=user@example.com&amp;zip=02210</strong>
 </samp>
 </pre>
                     </div>
@@ -327,7 +327,7 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <pre>
 <samp>
-/page/graph/rsvp/add?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH
+/page/graph/addrsvp?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH
 </samp>
 </pre>
                         <p>
@@ -400,7 +400,7 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <pre>
 <samp>
-/page/graph/rsvp/add?event_id=6&amp;will_attend=1&amp;guid=HASH&amp;<strong>shift_ids=5,8,9,4&amp;guests=2,2,0,2</strong>
+/page/graph/addrsvp?event_id=6&amp;will_attend=1&amp;guid=HASH&amp;<strong>shift_ids=5,8,9,4&amp;guests=2,2,0,2</strong>
 </samp>
 </pre>
                     </div>
@@ -413,7 +413,7 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <pre>
 <samp>
-/page/graph/rsvp/add?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH&amp;<strong>guests=0,1</strong>
+/page/graph/addrsvp?<strong>event_id=10,11</strong>&amp;will_attend=1&amp;guid=HASH&amp;<strong>guests=0,1</strong>
 </samp>
 </pre>
                     </div>
@@ -421,7 +421,7 @@ http://XYZ/page/graph/me/circles
                         Method: <code>GET</code>/<code>POST</code>
                     </p>
                     <p class="url">
-                        URL: /page/graph/rsvp/add?event_id=$event_id&amp;will_attend=1&amp; ...(etc. for all query parameters)
+                        URL: /page/graph/addrsvp?event_id=$event_id&amp;will_attend=1&amp; ...(etc. for all query parameters)
                     </p>
                     <div class="parameters">
                         <p>
