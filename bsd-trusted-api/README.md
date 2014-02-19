@@ -298,7 +298,7 @@ http://XYZ/page/graph/me/circles
                 </h5>
                 <div class="description">
                     <p>
-                        Allows creation or editing/overwriting of an individual RSVP to either a single event or multiple days of a single event, with or without shifts. <code>event_id</code>, <code>will_attend</code>, and either a <code>guid</code> or both an <code>email</code> address and <code>zip</code> are required for all adds.
+                        Allows creation or editing/overwriting of an individual RSVP to either a single event or multiple days of a single event, with or without shifts. <code>event_id</code> or <code>event_id_obfuscated<code>, <code>will_attend</code>, and either a <code>guid</code> or both an <code>email</code> address and <code>zip</code> are required for all adds.
                     </p>
                     <div class="example">
                         <p>
@@ -319,7 +319,7 @@ http://XYZ/page/graph/me/circles
 </pre>
                     </div>
                     <p>
-                        Days of a multi-day event are specified by a coma-separated list in the <code>event_id</code> parameter. The api assumes the RSVP-er is not attending any day of a multi-day event not specified in the an RSVP to another day of the event, and automatically sets <code>will_attend</code> to 0 for upspecified days. The event in the example below lasts a full week, but the cons will attend exactly two day of the seven days.
+                        Days of a multi-day event are specified by a coma-separated list in the <code>event_id</code> or <code>event_id_obfuscated</code> parameter. The api assumes the RSVP-er is not attending any day of a multi-day event not specified in the an RSVP to another day of the event, and automatically sets <code>will_attend</code> to 0 for upspecified days. The event in the example below lasts a full week, but the cons will attend exactly two day of the seven days.
                     </p>
                     <div class="example">
                         <p>
@@ -405,7 +405,7 @@ http://XYZ/page/graph/me/circles
 </pre>
                     </div>
                     <p>
-                        If <code>shift_ids</code> is not present, the guest parameter matches the <code>event_id</code> parameter in the same way.
+                        If <code>shift_ids</code> is not present, the guest parameter matches the <code>event_id</code> parameter in the same way (or the <code>event_id</code>s that correspond to the passed <code>event_id_obfuscated</code> parameter).
                     </p>
                     <div class="example">
                         <p>
@@ -429,10 +429,16 @@ http://XYZ/page/graph/me/circles
                         </p>
                         <dl>
                             <dt>
-                                <code>event_id</code> (required)
+                                <code>event_id</code> (required <strong>or</strong> pass <code>event_id_obfuscated</code>)
                             </dt>
                             <dd>
                                 Unique integer id of event. Must be specified as a comma-separated list for multiday events.
+                            </dd>
+                            <dt>
+                                <code>event_id_obfuscated</code> (required <strong>or</strong> pass <code>event_id</code>)
+                            </dt>
+                            <dd>
+                                Unique obfuscated id of event. Must be specified as a comma-separated list for multiday events.
                             </dd>
                             <dt>
                                 <code>will_attend</code> (reqired)
@@ -521,7 +527,7 @@ http://XYZ/page/graph/me/circles
                                 <code>guests</code>
                             </dt>
                             <dd>
-                                Number of guests to accompany the attendee. Does not include the attendee (so an RSVP-er coming alone would have <code>guests=0</code>). Comma separated list when multiple shifts or multiple days to be attended. For shifted events, each comma separated element corresponds the element in the same position in <code>shift_ids</code>. For multiday, unshifted events, each comma-separated element correspons to the element in the same position in <code>event_id</code>.
+                                Number of guests to accompany the attendee. Does not include the attendee (so an RSVP-er coming alone would have <code>guests=0</code>). Comma separated list when multiple shifts or multiple days to be attended. For shifted events, each comma separated element corresponds the element in the same position in <code>shift_ids</code>. For multiday, unshifted events, each comma-separated element correspons to the element in the same position in <code>event_id</code> (or the corresponding <code>event_id_obfuscated</code>).
                             </dd>
                             <dt>
                                 <code>is_potential_volunteer</code>
