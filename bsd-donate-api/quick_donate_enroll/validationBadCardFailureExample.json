@@ -1,0 +1,15 @@
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"validation",
+    "field_errors":[
+        {
+            "field":"cc_number",
+            "message":"invalid card number"
+        },
+        {
+            "field":"cc_type_cd",
+            "message":"required field"
+        }
+    ]
+}

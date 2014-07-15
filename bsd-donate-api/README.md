@@ -24,6 +24,16 @@ constituent.
 
 * `/page/cde/Api/Tokenize/v1`
 
+#### Quick_donate_enroll
+
+This API tokenizes the contributor information, enrolls the contributor to quick donate and returns 
+constituent id and the user id. The constituent id is the contributor's unique id in our system. 
+The user id is the login id that the contributor should use along with the password to sign in to
+the system. 
+
+* `/page/cde/Api/Quick_donate_enroll/v1`
+
+
 ### Request
 
 Requests must be made with HTTPS POST.
@@ -52,6 +62,7 @@ above with the following arguments.
 
 * Charge: Optional
 * Tokenize: Optional
+* Quick_donate_enroll: Optional
 
 Determines the language of the user facing messages in the response. Defualt
 (i.e. if not specified) is english. For spanish, the value should be "es_MX"
@@ -69,6 +80,7 @@ https://DOMAIN/utils/blue_dictionary/admin/section.php?component
 
 * Charge: Required
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 The slug of the BSD donation form under which the donation should be processed.
 
@@ -76,6 +88,7 @@ The slug of the BSD donation form under which the donation should be processed.
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 A unique per page view key that the system will de-dupe on. If nothing is
 submitted the dupe checker is disabled.
@@ -84,6 +97,7 @@ submitted the dupe checker is disabled.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The user's first name.
 
@@ -91,13 +105,23 @@ The user's first name.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The user's last name.
+
+**password**
+
+* Charge: N/A
+* Tokenize: N/A
+* Quick_donate_enroll: Required
+
+Password for the user to sign in.
 
 **addr1**
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The first line of the user's billing address.
 
@@ -105,6 +129,7 @@ The first line of the user's billing address.
 
 * Charge: Optional
 * Tokenize: Optional
+* Quick_donate_enroll: Optional
 
 The second line of the user's billing address.
 
@@ -112,6 +137,7 @@ The second line of the user's billing address.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The city of the user's billing address.
 
@@ -119,6 +145,7 @@ The city of the user's billing address.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The state of the user's billing address.
 
@@ -126,6 +153,7 @@ The state of the user's billing address.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The zip or postal code of the user's billing address.
 
@@ -133,6 +161,7 @@ The zip or postal code of the user's billing address.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The country of the user's address. (US)
 
@@ -140,6 +169,7 @@ The country of the user's address. (US)
 
 * Charge: Conditional
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The user's email address.
 
@@ -149,6 +179,7 @@ If this is set to required in the BSD donation form, then it should be required.
 
 * Charge: Conditional
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The user's phone number.
 
@@ -158,6 +189,7 @@ If this is set to required in the BSD donation form, then it should be required.
 
 * Charge: Required
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 Because of the BSD payment processor this must be set to a value of "other" and
 the amount must be passed as the amount_other argument mentioned below. When
@@ -168,6 +200,7 @@ the amount_other argument (below) to specify the donation amount.
 
 * Charge: Required
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 The donation amount selected by the user. Float value to the hundredth decimal
 point. Examples: 10.00, 20.12
@@ -176,6 +209,7 @@ point. Examples: 10.00, 20.12
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 The user's temporary, encoded payment token that is returned with the BSD
 getToken JSONP endpoint. Required if no credit card information will be passed.
@@ -184,6 +218,7 @@ getToken JSONP endpoint. Required if no credit card information will be passed.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The user's credit card number. If using a payment token the value should be the
 last four of the user's credit card (retrieved from the getToken BSD endpoint).
@@ -193,6 +228,7 @@ Otherwise it should be the full credit card number.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The type of card from the user. If using a payment token the value should be
 what is specified in the getToken endpoint. Otherwise it should be what the
@@ -204,6 +240,7 @@ type.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The expiration month of the user's credit card. If using a payment token the
 value should be what is specified in the getToken endpoint. Otherwise it should
@@ -213,6 +250,7 @@ be what the user selects.
 
 * Charge: Required
 * Tokenize: Required
+* Quick_donate_enroll: Required
 
 The expiration year of the user's credit card. If using a payment token the
 value should be what is specified in the getToken endpoint. Otherwise it should
@@ -222,6 +260,7 @@ be what the user selects.
 
 * Charge: Conditional
 * Tokenize: Conditional
+* Quick_donate_enroll: Conditional
 
 The user's employer.
 
@@ -236,6 +275,7 @@ requirement for your organization to always asks for this information.
 
 * Charge: Conditional
 * Tokenize: Conditional
+* Quick_donate_enroll: Conditional
 
 The user's occupation.
 
@@ -247,6 +287,7 @@ Quick Donate Enroll page.
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 You can use this argument to pass a comma separated list of source or subsource
 codes to the API.
@@ -255,6 +296,7 @@ codes to the API.
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 When set to true, omits the td URL parameters form the success_url in the
 response. These parameters contains the same tracking data included in the
@@ -265,6 +307,7 @@ donation thank you page, but are sometimes not necessary for the Donate API.
 
 * Charge: Required for recurring contributions
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 To submit a recurring contribution you need to create a BSD donate page that is
 set to type "recurring". Currently, you cannot have a recurring and
@@ -275,6 +318,7 @@ recurring page, this parameter must be set to "1".
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 These are all fields to hold custom data. They don't do anything except hold
 data associated with the donation in the BSD database.
@@ -283,6 +327,7 @@ data associated with the donation in the BSD database.
 
 * Charge: Optional
 * Tokenize: N/A
+* Quick_donate_enroll: N/A
 
 Instead of the preconfigured thank you page action this url will be returned as
 the thank you redirect url when it is set. WARNING: This url is not validated
@@ -403,6 +448,41 @@ This is primarily due to the card being declined or being placed into the
 review queue. The response contains an API version number, status ("fail"), and
 a failure code ("notoken").
 
+### Quick_donate_enroll Method
+
+**successful responses**
+
+JSON status code: 200
+
+The response will contain a JSON object with the API version number, the status 
+("success"), the constituent id ("cons_id") and user id ("user_id").
+
+**create account failure response**
+
+JSON status code: 400
+
+This occurs when the password is missing, too short or an account has been enrolled with 
+the same email and password. The response contains an API version number, status ("fail"), 
+a failure code ("create_account"), and a description of the error ("description").
+
+
+**validation failure response**
+
+JSON status code: 400
+
+This occurs when one of the user info. arguments in the request does not
+validate correctly. (e.g. the user's email is malformed, there was no phone
+number when that field is required, etc.) The response contains an API version
+number, status ("fail"), a failure code ("validation"), and an array of errors.
+
+**validation failure response**
+
+JSON status code: 400
+
+This occurs when we are not able to tokenize the payment information provided.
+This is primarily due to the card being declined or being placed into the
+review queue. The response contains an API version number, status ("fail"), and
+a failure code ("notoken").
 ---
 
 ## Plans for version 2

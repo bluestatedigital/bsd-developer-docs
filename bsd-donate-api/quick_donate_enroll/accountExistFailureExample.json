@@ -1,0 +1,6 @@
+{
+    "api_version":1,
+    "status":"fail",
+    "code":"create_account",
+    "description":"this account already exists"
+}
