@@ -340,11 +340,11 @@ if applicable.
 * Tokenize: N/A
 * Quick_donate_enroll: N/A
 
-Obfuscated mailing link id, which can be retrieved from 'mlid' cookie. When passed 
-on as parameter, the api will de-obfuscate the id and embed it to the transaction record.
+Obfuscated mailing link ID, which can be retrieved from 'mlid' cookie. When passed 
+on as parameter, the API will de-obfuscate the ID and embed it into the transaction record.
 
-Note: the custom donation page must be in the same domain as the main donation page; 
-otherwise the custom donation would not be able to access the cookie.
+Note: the custom donation page must be on the same domain as the main donation page, 
+otherwise the custom donation page would not be able to access the cookie.
 
 **ob_mailing_recipient_id**
 
@@ -352,11 +352,11 @@ otherwise the custom donation would not be able to access the cookie.
 * Tokenize: N/A
 * Quick_donate_enroll: N/A
 
-Obfuscated mailing recipient id, which can be retrieved from 'mrid' cookie. When passed 
-on as parameter, the api will de-obfuscate the id and embed it to the transaction record.
+Obfuscated mailing recipient ID, which can be retrieved from 'mrid' cookie. When passed 
+on as parameter, the API will de-obfuscate the ID and embed it into the transaction record.
 
-Note: the custom donation page must be in the same domain as the main donation page; 
-otherwise the custom donation would not be able to access the cookie.
+Note: the custom donation page must be on the same domain as the main donation page, 
+otherwise the custom donation page would not be able to access the cookie.
 
 ---
 
