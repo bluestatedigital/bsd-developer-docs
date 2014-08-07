@@ -26,10 +26,10 @@ constituent.
 
 #### Quick_donate_enroll
 
-This API tokenizes the contributor information, enrolls the contributor to quick donate and returns 
-constituent id and the user id. The constituent id is the contributor's unique id in our system. 
-The user id is the login id that the contributor should use along with the password to sign in to
-the system. 
+This API tokenizes the contributor information, enrolls the constituent into quick donate and returns 
+constituent ID and the user ID. The constituent ID is the constituent's unique ID in our system. 
+The user ID is the login ID that the constituent should use along with the password to sign in to
+the system. Typically the user ID is the constituent's email address that was provided for this API.
 
 * `/page/cde/Api/Quick_donate_enroll/v1`
 
@@ -333,6 +333,30 @@ Instead of the preconfigured thank you page action this url will be returned as
 the thank you redirect url when it is set. WARNING: This url is not validated
 by BSD in any way and is simply passed through with "td" query strings appended
 if applicable.
+
+**ob_mailing_link_id**
+
+* Charge: Optional
+* Tokenize: N/A
+* Quick_donate_enroll: N/A
+
+Obfuscated mailing link ID, which can be retrieved from 'mlid' cookie. When passed 
+on as parameter, the API will de-obfuscate the ID and embed it into the transaction record.
+
+Note: the custom donation page must be on the same domain as the main donation page, 
+otherwise the custom donation page would not be able to access the cookie.
+
+**ob_mailing_recipient_id**
+
+* Charge: Optional
+* Tokenize: N/A
+* Quick_donate_enroll: N/A
+
+Obfuscated mailing recipient ID, which can be retrieved from 'mrid' cookie. When passed 
+on as parameter, the API will de-obfuscate the ID and embed it into the transaction record.
+
+Note: the custom donation page must be on the same domain as the main donation page, 
+otherwise the custom donation page would not be able to access the cookie.
 
 ---
 
