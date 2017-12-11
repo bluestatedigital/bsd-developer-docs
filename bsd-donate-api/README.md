@@ -262,8 +262,9 @@ be what the user selects.
 * Tokenize: N/A
 * Quick_donate_enroll: N/A
 
-Full gift is used if the contribution page has option for the donor to absorb the donation fees.
-Only avaliable for Stripe Gateway.
+Full gift Boolean param ,
+its avaliable for clients enrolled Full Gift.
+The donation fees amount is added to ``amount`` param.
 
 **employer**
 
