@@ -256,6 +256,15 @@ The expiration year of the user's credit card. If using a payment token the
 value should be what is specified in the getToken endpoint. Otherwise it should
 be what the user selects.
 
+**full_gift**
+
+* Charge: Conditional
+* Tokenize: N/A
+* Quick_donate_enroll: N/A
+
+Full gift is used if the contribution page has option for the donor to absorb the donation fees.
+Only avaliable for Stripe Gateway.
+
 **employer**
 
 * Charge: Conditional
