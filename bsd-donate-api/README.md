@@ -256,6 +256,16 @@ The expiration year of the user's credit card. If using a payment token the
 value should be what is specified in the getToken endpoint. Otherwise it should
 be what the user selects.
 
+**full_gift**
+
+* Charge: Conditional
+* Tokenize: N/A
+* Quick_donate_enroll: N/A
+
+Full gift Boolean param ,
+its avaliable for clients enrolled Full Gift.
+The donation fees amount is added to ``amount`` param.
+
 **employer**
 
 * Charge: Conditional
